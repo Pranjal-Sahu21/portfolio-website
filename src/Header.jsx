@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./style.css";
+import logo from "../assets/apple-touch-icon.png";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,11 +21,7 @@ export default function Header() {
     <nav>
       <div className="logo">
         <div className="logo-circle">
-          <img
-            className="pranjal-logo"
-            src="../assets/apple-touch-icon.png"
-            alt="logo"
-          />
+          <img className="pranjal-logo" src={logo} alt="logo" />
         </div>
         <h3>Pranjal Sahu</h3>
       </div>
