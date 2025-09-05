@@ -590,8 +590,7 @@ body {
   color: var(--light-text);
 }
 
-/* body::before {
-  content: "";
+/* content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -606,8 +605,7 @@ body {
   pointer-events: none;
   z-index: 0;
 } */
-
-main,
+*/ main,
 nav,
 footer,
 section {
@@ -1136,8 +1134,8 @@ body {
     #1e1e1e,
     #121212
   ) !important;
-  background-size: cover !important; /* prevents movement */
-  background-attachment: fixed !important; /* locks it */
+  background-size: cover !important;
+  background-attachment: fixed !important;
 }
 
 body::before {
@@ -1160,4 +1158,14 @@ body::before {
 .contact-section form:hover {
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6), 0 0 18px 3px var(--primary),
     0 0 30px 8px rgba(226, 88, 34, 0.5);
+}
+
+::selection {
+  background: var(--primary);
+  color: rgb(41, 40, 40);
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: rgb(41, 40, 40);
 }
