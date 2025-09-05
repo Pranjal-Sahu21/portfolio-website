@@ -22,7 +22,7 @@ export default function Header() {
         <div className="logo-circle">
           <img
             className="pranjal-logo"
-            src="assets/apple-touch-icon.png"
+            src="/assets/apple-touch-icon.png"
             alt="logo"
           />
         </div>

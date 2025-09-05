@@ -5,31 +5,31 @@ export default function Projects() {
     {
       title: "CheeType",
       desc: "An interactive React application that tests typing speed and accuracy, featuring dynamic word generation, real-time performance tracking, smooth UI feedback, and customizable challenge lengths.",
-      img: "assets/cheetype.png",
+      img: "/assets/cheetype.png",
       link: "https://cheetype.netlify.app/",
     },
     {
       title: "TasteGPT",
       desc: "A React app that takes ingredients from the user and recommends a single recipe using the Spoonacular API, featuring a responsive interface with a dark/light mode toggle.",
-      img: "assets/tastegpt.png",
+      img: "/assets/tastegpt.png",
       link: "https://tastegpt.netlify.app/",
     },
     {
       title: "SkyLune",
       desc: "A clean, user-friendly weather app that delivers current conditions and a 4-day forecast. Focused on simplicity, performance, and clear presentation of essential information.",
-      img: "assets/skylune.png",
+      img: "/assets/skylune.png",
       link: "https://skylune.netlify.app/",
     },
     {
       title: "Plannix",
       desc: "A clean and user-friendly to-do list application with a minimalist interface. The app is fully responsive and uses local storage to ensure tasks persist across sessions without requiring a backend.",
-      img: "assets/plannix.png",
+      img: "/assets/plannix.png",
       link: "https://plannix.netlify.app/",
     },
     {
       title: "GreenTech",
       desc: "My first project, built only with HTML and CSS, to practice Flexbox and responsive web design.",
-      img: "assets/greentech.png",
+      img: "/assets/greentech.png",
       link: "https://greentechnologies.netlify.app/",
     },
   ];
