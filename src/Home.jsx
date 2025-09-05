@@ -1,5 +1,5 @@
 import "./style.css";
-import picOfMe from "../assets/picofme (7).png"
+import picOfMe from "../assets/picofme (7).png";
 
 export default function Home() {
   return (
@@ -16,7 +16,8 @@ export default function Home() {
         <h2 className="work">A FrontEnd Developer</h2>
         <p>
           I'm Pranjal Sahu, a passionate FrontEnd Developer specializing in
-          creating engaging, user-friendly websites and applications.
+          creating engaging, user-friendly websites and applications. I love
+          crafting clean code and beautiful designs that bring ideas to life.
         </p>
         <a
           href="https://drive.google.com/file/d/1qgfwbu4S9dREyCyacf2gA3N1xGzGmOoe/view?usp=drive_link"
