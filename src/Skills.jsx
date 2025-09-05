@@ -1,4 +1,7 @@
 import "./style.css";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
 import htmlLogo from "../assets/html-logo.png";
 import cssLogo from "../assets/css-logo.png";
 import tailwindLogo from "../assets/tailwindcss-logo.png";
@@ -22,10 +25,24 @@ export default function Skills() {
     { name: "DSA", img: dsaLogo },
   ];
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <section id="skills">
+    <section id="skills" ref={ref}>
       <h2 className="heading">My Skills</h2>
-      <div className="skills-grid">
+      <motion.div
+        className="skills-grid"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={
+          isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+        }
+        transition={{
+          type: "spring",
+          stiffness: 50,
+          damping: 20,
+        }}
+      >
         {skills.map((s) => (
           <div className="skill-item" key={s.name}>
             <div className="skill-icon">
@@ -34,7 +51,7 @@ export default function Skills() {
             <p className="skill-name">{s.name}</p>
           </div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import "./style.css";
 import logo from "../assets/apple-touch-icon.png";
 
@@ -17,8 +18,22 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const headerVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 80, damping: 20, duration: 0.5 },
+    },
+  };
+
   return (
-    <nav>
+    <motion.nav
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
+      className="header-nav"
+    >
       <div className="logo">
         <div className="logo-circle">
           <img className="pranjal-logo" src={logo} alt="logo" />
@@ -59,6 +74,6 @@ export default function Header() {
         <div></div>
         <div></div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

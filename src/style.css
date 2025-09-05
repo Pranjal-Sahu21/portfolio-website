@@ -137,6 +137,7 @@ ul.nav-links li a:hover {
   text-align: center;
   justify-content: space-around;
   padding-top: 60px;
+  margin-top: 32px;
 }
 
 .hero-img {
@@ -324,29 +325,29 @@ footer {
   border-top: 1px solid #333;
 }
 
-.typewriter {
+/* .typewriter {
   display: inline-block;
   overflow: hidden;
   border-right: 2px solid var(--primary);
   white-space: nowrap;
   animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
   max-width: 0;
-}
+} */
 
-@keyframes typing {
+/* @keyframes typing {
   from {
     max-width: 0;
   }
   to {
     max-width: 100%;
   }
-}
+} */
 
-@keyframes blink {
+/* @keyframes blink {
   50% {
     border-color: transparent;
   }
-}
+} */
 
 .name {
   position: relative;
@@ -463,7 +464,7 @@ footer {
   text-align: center;
 }
 
-section {
+/* section {
   opacity: 0;
   transform: scale(0.92);
   transition: opacity 1s ease, transform 1s ease;
@@ -472,7 +473,7 @@ section {
 section.visible {
   opacity: 1;
   transform: scale(1);
-}
+} */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -528,11 +529,11 @@ section.visible {
   }
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
   .typewriter {
     font-size: 2rem;
   }
-}
+} */
 
 .heading,
 h2 {
@@ -670,7 +671,7 @@ nav {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   position: fixed;
   width: 100%;
-  height: 58px;
+  height: 72px;
   top: 0;
   z-index: 1000;
 }
@@ -1169,3 +1170,4 @@ body::before {
   background: var(--primary);
   color: rgb(41, 40, 40);
 }
+

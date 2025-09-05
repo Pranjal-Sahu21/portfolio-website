@@ -1,9 +1,30 @@
 import "./style.css";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
 import cheeType from "../assets/cheetype.png";
 import tasteGpt from "../assets/tastegpt.png";
 import skyLune from "../assets/skylune.png";
 import plannix from "../assets/plannix.png";
 import greenTech from "../assets/greentech.png";
+
+const cardVariants = (direction) => {
+  const isMobile = window.innerWidth <= 768;
+  const offset = isMobile ? 150 : 400;
+
+  return {
+    hidden: { opacity: 0, x: direction === "left" ? -offset : offset },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+      },
+    },
+  };
+};
 
 export default function Projects() {
   const projects = [
@@ -43,20 +64,28 @@ export default function Projects() {
     <section id="projects" className="section projects-section">
       <h1 className="heading">My Projects</h1>
       <div className="projects">
-        {projects.map((p) => (
-          <a
-            href={p.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={p.title}
-          >
-            <div className="project-card card-vibe">
+        {projects.map((p, index) => {
+          const ref = useRef(null);
+          const isInView = useInView(ref, { once: true, amount: 0.1 });
+
+          return (
+            <motion.a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={p.title}
+              ref={ref}
+              className="project-card card-vibe"
+              variants={cardVariants(index % 2 === 0 ? "left" : "right")}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
               <img src={p.img} alt={p.title} className="project-img" />
               <h2 className="project-title">{p.title}</h2>
               <p className="project-desc">{p.desc}</p>
-            </div>
-          </a>
-        ))}
+            </motion.a>
+          );
+        })}
       </div>
     </section>
   );

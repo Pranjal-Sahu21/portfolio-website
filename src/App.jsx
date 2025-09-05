@@ -10,6 +10,11 @@ import "./style.css";
 
 export default function App() {
   useEffect(() => {
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-links a");
 
@@ -48,8 +53,6 @@ export default function App() {
           });
         }
       });
-
-      
     };
     window.addEventListener("scroll", onScroll);
 
