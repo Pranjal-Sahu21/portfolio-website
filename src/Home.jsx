@@ -1,10 +1,11 @@
 import "./style.css";
+import picOfMe from "../assets/picofme (7).png"
 
 export default function Home() {
   return (
     <section id="home" className="section hero">
       <div className="hero-img">
-        <img src="../assets/picofme (7).png" alt="Pranjal Sahu" />
+        <img src={picOfMe} alt="Pranjal Sahu" />
       </div>
       <div className="hero-content">
         <h1>

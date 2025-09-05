@@ -1,16 +1,25 @@
 import "./style.css";
+import htmlLogo from "../assets/html-logo.png";
+import cssLogo from "../assets/css-logo.png";
+import tailwindLogo from "../assets/tailwindcss-logo.png";
+import vanillaLogo from "../assets/js-logo.png";
+import reactLogo from "../assets/react-logo.png";
+import javaLogo from "../assets/java-logo.png";
+import pythonLogo from "../assets/python-logo.png";
+import mySqlLogo from "../assets/mysql-logo.png";
+import dsaLogo from "../assets/dsa.png";
 
 export default function Skills() {
   const skills = [
-    { name: "HTML", img: "../assets/html-logo.png" },
-    { name: "CSS", img: "../assets/css-logo.png" },
-    { name: "Tailwind CSS", img: "../assets/tailwindcss-logo.png" },
-    { name: "Vanilla JS", img: "../assets/js-logo.png" },
-    { name: "React.js", img: "../assets/react-logo.png" },
-    { name: "Java", img: "../assets/java-logo.png" },
-    { name: "Python", img: "../assets/python-logo.png" },
-    { name: "MySQL", img: "../assets/mysql-logo.png" },
-    { name: "DSA", img: "../assets/dsa.png" },
+    { name: "HTML", img: htmlLogo },
+    { name: "CSS", img: cssLogo },
+    { name: "Tailwind CSS", img: tailwindLogo },
+    { name: "Vanilla JS", img: vanillaLogo },
+    { name: "React.js", img: reactLogo },
+    { name: "Java", img: javaLogo },
+    { name: "Python", img: pythonLogo },
+    { name: "MySQL", img: mySqlLogo },
+    { name: "DSA", img: dsaLogo },
   ];
 
   return (
