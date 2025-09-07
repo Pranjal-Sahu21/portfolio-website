@@ -766,7 +766,7 @@ ul.nav-links li a:hover {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-16px);
+    transform: translateY(-20px);
   }
 }
 
@@ -794,11 +794,11 @@ ul.nav-links li a:hover {
 
 .skill-item,
 .social-icons a {
-  animation: floaty 6s ease-in-out infinite;
+  animation: floaty 5s ease-in-out infinite;
 }
 
 .skill-item:nth-child(odd):nth-child(odd) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 .skill-item:nth-child(even):nth-child(even) {
   animation-delay: 0.6s;
@@ -1171,3 +1171,13 @@ body::before {
   color: rgb(41, 40, 40);
 }
 
+.hero-description {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  color: var(--light-text);
+  font-weight: 400;
+  text-shadow: 2px 2px 8px rgba(226, 88, 34, 0.5),
+    -2px -2px 8px rgba(178, 34, 34, 0.3);
+}

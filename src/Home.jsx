@@ -64,11 +64,11 @@ export default function Home() {
         </motion.h1>
 
         <motion.h2 className="work" variants={item}>
-          A FrontEnd Developer
+          A Frontend Developer
         </motion.h2>
 
-        <motion.p variants={item}>
-          I'm Pranjal Sahu, a passionate FrontEnd Developer specializing in
+        <motion.p className="hero-description" variants={item}>
+          I'm Pranjal Sahu, a passionate Frontend Developer specializing in
           creating engaging, user-friendly websites and applications. I love
           crafting clean code and beautiful designs that bring ideas to life.
         </motion.p>
