@@ -19,8 +19,9 @@ const cardVariants = (direction) => {
       x: 0,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 20,
+        stiffness: 60,
+        damping: 25,
+        mass: 1,
       },
     },
   };
