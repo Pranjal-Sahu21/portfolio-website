@@ -17,6 +17,7 @@ const cardVariants = (direction) => ({
       stiffness: 50,
       damping: 20,
       mass: 1,
+      opacity: { duration: 0.8, ease: "easeInOut" }, 
     },
   },
 });
