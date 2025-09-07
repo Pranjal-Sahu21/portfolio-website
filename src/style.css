@@ -233,7 +233,7 @@ ul.nav-links li a:hover {
     var(--primary) 100%
   );
   background-size: 200% auto;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 3s linear infinite;
 }
@@ -359,7 +359,7 @@ footer {
     var(--primary) 100%
   );
   background-size: 200% auto;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 3s linear infinite;
 }
@@ -539,7 +539,7 @@ section.visible {
 h2 {
   background: linear-gradient(90deg, #aaa, #fff, #aaa, #555, #aaa);
   background-size: 200% auto;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: metallicShine 4s linear infinite;
 }
@@ -973,7 +973,7 @@ footer .social-icons a:hover {
 
 .heading {
   background: linear-gradient(90deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
