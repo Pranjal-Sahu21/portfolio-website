@@ -1,5 +1,5 @@
 import "./style.css";
-import picOfMe from "../assets/picofme (7).png";
+import picOfMe from "../assets/picofme (7).webp";
 import { motion } from "framer-motion";
 
 const container = {
