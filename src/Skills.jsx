@@ -33,9 +33,9 @@ export default function Skills() {
       <h2 className="heading">My Skills</h2>
       <motion.div
         className="skills-grid"
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0.5 }}
         animate={
-          isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+          isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }
         }
         transition={{
           type: "spring",
