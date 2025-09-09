@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Header from "./Header";
 import Home from "./Home";
 import Journey from "./Journey";
@@ -6,12 +6,32 @@ import Skills from "./Skills";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import "./style.css";
 
 export default function App() {
+  const lenisRef = useRef(null);
+
   useEffect(() => {
     window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
+
+    lenisRef.current = new Lenis({
+      duration: 1.2,
+      smooth: true,
+      smoothTouch: false,
+    });
+
+    function raf(time) {
+      lenisRef.current.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenisRef.current.destroy();
+    };
   }, []);
 
   useEffect(() => {
@@ -30,7 +50,6 @@ export default function App() {
       },
       { threshold: 0.1 }
     );
-
     sections.forEach((section) => observer.observe(section));
 
     const onScroll = () => {
@@ -46,15 +65,20 @@ export default function App() {
         link.classList.remove("active");
         if (link.getAttribute("href") === `#${current}`) {
           link.classList.add("active");
-          link.scrollIntoView({
-            inline: "center",
-            block: "nearest",
-            behavior: "smooth",
-          });
         }
       });
     };
     window.addEventListener("scroll", onScroll);
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href");
+        if (targetId && lenisRef.current) {
+          lenisRef.current.scrollTo(targetId);
+        }
+      });
+    });
 
     const cards = document.querySelectorAll(".card-vibe");
     cards.forEach((card) => {
