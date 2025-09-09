@@ -81,6 +81,38 @@ export default function Contact() {
           </button>
         </motion.form>
       )}
+      <motion.div
+        className="social-icons"
+        initial={{ opacity: 0, y: 80 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+        transition={{
+          type: "spring",
+          stiffness: 50,
+          damping: 20,
+          delay: 0.4,
+        }}
+      >
+        <a 
+          href="https://www.instagram.com/prsahu_21/?next=%2F" 
+          target="_blank"
+        >
+          <i className="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/pranjal-sahu-/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="fab fa-linkedin"></i>
+        </a>
+        <a
+          href="https://github.com/Pranjal-Sahu21"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="fab fa-github"></i>
+        </a>
+      </motion.div>
     </section>
   );
 }
