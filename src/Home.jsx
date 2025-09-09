@@ -40,7 +40,6 @@ const imageVariant = {
 export default function Home() {
   return (
     <section id="home" className="section hero">
-      {/* Animated image */}
       <motion.div
         className="hero-img"
         variants={imageVariant}
@@ -50,7 +49,6 @@ export default function Home() {
         <img src={picOfMe} alt="Pranjal Sahu" />
       </motion.div>
 
-      {/* Animated text block */}
       <motion.div
         className="hero-content"
         variants={container}
