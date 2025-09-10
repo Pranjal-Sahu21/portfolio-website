@@ -70,9 +70,21 @@ export default function Header() {
       </ul>
 
       <div className="menu" onClick={toggleMenu}>
-        <div></div>
-        <div></div>
-        <div></div>
+        <motion.div
+          animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          className="bar"
+        />
+        <motion.div
+          animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          className="bar"
+        />
+        <motion.div
+          animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          className="bar"
+        />
       </div>
     </motion.nav>
   );
