@@ -20,7 +20,7 @@ export default function Skills() {
     { name: "Tailwind CSS", img: tailwindLogo },
     { name: "Vanilla JS", img: vanillaLogo },
     { name: "React.js", img: reactLogo },
-    { name: "Framer Motion", img: framerMotion },
+    // { name: "Framer Motion", img: framerMotion },
     { name: "Java", img: javaLogo },
     { name: "Python", img: pythonLogo },
     { name: "MySQL", img: mySqlLogo },
