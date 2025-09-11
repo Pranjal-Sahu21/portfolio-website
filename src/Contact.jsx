@@ -64,9 +64,12 @@ export default function Contact() {
           <input type="email" name="email" placeholder="Your Email" required />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
 
+          <input type="text" name="subject" placeholder="Subject" required />
+          <ValidationError prefix="Subject" field="subject" errors={state.errors} />
+
           <textarea
             name="message"
-            placeholder="Your Message"
+            placeholder="Message"
             rows="5"
             required
           />

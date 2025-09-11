@@ -1261,3 +1261,18 @@ body::before {
     display: none !important;
   }
 }
+
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+}
+
+
