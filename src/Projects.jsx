@@ -22,13 +22,16 @@ const cardVariants = (direction) => {
         stiffness: 60,
         damping: 25,
         mass: 1,
-        opacity: { duration: 0.8, ease: "easeInOut" }, 
+        opacity: { duration: 0.8, ease: "easeInOut" },
       },
     },
   };
 };
 
 export default function Projects() {
+  const headingRef = useRef(null);
+  const isInView = useInView(headingRef, { once: true, amount: 0.3 });
+
   const projects = [
     {
       title: "CheeType",
@@ -64,7 +67,20 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section projects-section">
-      <h1 className="heading">My Projects</h1>
+      <motion.h1
+        ref={headingRef}
+        initial={{ opacity: 0, y: 50 }} 
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} 
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+          duration: 0.8,
+        }}
+        className="heading"
+      >
+        My Projects
+      </motion.h1>
       <div className="projects">
         {projects.map((p, index) => {
           const ref = useRef(null);

@@ -66,17 +66,16 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={ref}>
+    <motion.section
+      id="skills"
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+      transition={{ type: "spring", stiffness: 50, damping: 20 }}
+    >
       <h2 className="heading">My Skills</h2>
 
-      <div
-        className="skills-grid"
-        initial={{ opacity: 0 }}
-        animate={
-          isInView ? { opacity: 1 } : { opacity: 0 }
-        }
-        transition={{ type: "spring", stiffness: 50, damping: 20 }}
-      >
+      <div className="skills-grid">
         {allSkills.map((s) => (
           <div className="skill-item" key={s.name}>
             <div className="skill-icon">
@@ -124,6 +123,6 @@ export default function Skills() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

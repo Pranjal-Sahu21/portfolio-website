@@ -2,26 +2,6 @@ import "./style.css";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const cardVariants = (direction) => ({
-  hidden: {
-    opacity: 0,
-    x: direction === "left" ? -400 : direction === "right" ? 400 : 0,
-    y: window.innerWidth < 768 ? 30 : 0,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 50,
-      damping: 20,
-      mass: 1,
-      opacity: { duration: 0.8, ease: "easeInOut" }, 
-    },
-  },
-});
-
 export default function Journey() {
   const journeyData = [
     {
@@ -42,18 +22,58 @@ export default function Journey() {
     },
   ];
 
+  const headingRef = useRef(null);
+  const isInView = useInView(headingRef, { once: true, amount: 0.3 });
+
+  const cardVariants = (direction) => ({
+    hidden: {
+      opacity: 0,
+      x: direction === "left" ? -400 : direction === "right" ? 400 : 0,
+      y: window.innerWidth < 768 ? 30 : 0,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 20,
+        mass: 1,
+        opacity: { duration: 0.8, ease: "easeInOut" },
+      },
+    },
+  });
+
   return (
     <section id="journey" className="section">
-      <h2 className="heading">My Journey</h2>
+      <motion.h2
+        ref={headingRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+          duration: 0.8,
+        }}
+        className="heading"
+      >
+        My Journey
+      </motion.h2>
+
       <div className="journey-container">
         {journeyData.map((journey, index) => {
-          const ref = useRef(null);
-          const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
+          const cardRef = useRef(null);
+          const isInView = useInView(cardRef, {
+            once: true,
+            margin: "-30% 0px",
+          });
 
           return (
             <motion.div
               key={index}
-              ref={ref}
+              ref={cardRef}
               className="journey-card"
               variants={cardVariants(index % 2 === 0 ? "left" : "right")}
               initial="hidden"
