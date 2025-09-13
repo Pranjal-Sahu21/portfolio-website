@@ -1360,7 +1360,7 @@ body {
   }
 }
 
-@media (width > 1024px) {
+@media (width >= 1024px) {
   .logo {
     display: none;
   }
