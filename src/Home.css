@@ -32,6 +32,8 @@
   text-align: center;
   color: var(--muted-text);
   font-weight: 400;
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 
 .hero-buttons a {
@@ -133,4 +135,8 @@ canvas {
 .hero-buttons {
   position: relative;
   z-index: 1;
+}
+
+.glow-text {
+    margin-top: 36px;
 }
