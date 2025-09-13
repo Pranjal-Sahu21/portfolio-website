@@ -11,7 +11,6 @@ export default function Header() {
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       const desktop = window.innerWidth > 992;
@@ -22,7 +21,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Handle scroll
   useEffect(() => {
     const sections = ["home", "journey", "skills", "projects", "contact"];
 
@@ -60,14 +58,50 @@ export default function Header() {
   };
 
   const drawerVariants = {
-    hidden: { x: "100%" },
+    hidden: { scale: 0, opacity: 0, originX: 1, originY: 0 },
     visible: {
-      x: 0,
-      transition: { type: "tween", ease: "easeInOut", duration: 0.5 },
+      scale: 1,
+      opacity: 1,
+      originX: 1,
+      originY: 0,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 25,
+        when: "beforeChildren",
+        staggerChildren: 0.05,
+        staggerDirection: 1,
+      },
     },
     exit: {
-      x: "100%",
-      transition: { type: "tween", ease: "easeInOut", duration: 0.5 },
+      scale: 0,
+      opacity: 0,
+      originX: 1,
+      originY: 0,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 25,
+        when: "afterChildren",
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    },
+  };
+
+  const linkVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 300, damping: 20 },
+    },
+    exit: {
+      opacity: 0,
+      y: 20,
+      scale: 0.8,
+      transition: { type: "spring", stiffness: 300, damping: 20 },
     },
   };
 
@@ -93,7 +127,7 @@ export default function Header() {
             <div className="logo-circle">
               <img className="pranjal-logo" src={logo} alt="logo" />
             </div>
-            <h3>Pranjal Sahu</h3>
+            <h3 className="name-header">Pranjal Sahu</h3>
           </div>
 
           {isDesktop ? (
@@ -110,60 +144,64 @@ export default function Header() {
               ))}
             </ul>
           ) : (
-            <AnimatePresence>
-              {menuOpen && (
-                <>
-                  <motion.div
-                    className="nav-overlay"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={() => setMenuOpen(false)}
-                  />
-                  <motion.ul
-                    className="nav-drawer"
-                    variants={drawerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                  >
-                    {navLinks.map((link) => (
-                      <li key={link.id}>
-                        <a
-                          href={`#${link.id}`}
-                          onClick={() => setMenuOpen(false)}
-                          className={activeSection === link.id ? "active" : ""}
-                        >
-                          {link.label}
-                        </a>
-                      </li>
-                    ))}
-                  </motion.ul>
-                </>
-              )}
-            </AnimatePresence>
-          )}
+            <>
+              <AnimatePresence>
+                {menuOpen && (
+                  <>
+                    <motion.div
+                      className="nav-overlay"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={() => setMenuOpen(false)}
+                    />
+                    <motion.ul
+                      className="nav-drawer"
+                      variants={drawerVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      {navLinks.map((link) => (
+                        <motion.li key={link.id} variants={linkVariants}>
+                          <a
+                            href={`#${link.id}`}
+                            onClick={() => setMenuOpen(false)}
+                            className={
+                              activeSection === link.id ? "active" : ""
+                            }
+                          >
+                            {link.label}
+                          </a>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </>
+                )}
+              </AnimatePresence>
 
-          {!isDesktop && (
-            <div className="menu" onClick={toggleMenu}>
-              <motion.div
-                animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="bar"
-              />
-              <motion.div
-                animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                className="bar"
-              />
-              <motion.div
-                animate={
-                  menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }
-                }
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="bar"
-              />
-            </div>
+              <div className="menu" onClick={toggleMenu}>
+                <motion.div
+                  animate={
+                    menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }
+                  }
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="bar"
+                />
+                <motion.div
+                  animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                  className="bar"
+                />
+                <motion.div
+                  animate={
+                    menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }
+                  }
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="bar"
+                />
+              </div>
+            </>
           )}
         </motion.nav>
       )}

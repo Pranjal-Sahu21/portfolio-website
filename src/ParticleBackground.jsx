@@ -13,7 +13,7 @@ export default function ParticleBackground() {
     const particles = Array.from({ length: 100 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 3 + 1, // for triangle size
+      size: Math.random() * 3 + 1,
       speedX: (Math.random() - 0.5) * 0.3,
       speedY: (Math.random() - 0.5) * 0.3,
       opacity: Math.random() * 0.5 + 0.3,
@@ -27,9 +27,9 @@ export default function ParticleBackground() {
 
     function drawTriangle(x, y, size, color, opacity) {
       ctx.beginPath();
-      ctx.moveTo(x, y - size / 2); // top vertex
-      ctx.lineTo(x - size / 2, y + size / 2); // bottom left
-      ctx.lineTo(x + size / 2, y + size / 2); // bottom right
+      ctx.moveTo(x, y - size / 2);
+      ctx.lineTo(x - size / 2, y + size / 2);
+      ctx.lineTo(x + size / 2, y + size / 2);
       ctx.closePath();
       ctx.fillStyle = `rgba(${parseInt("e2", 16)}, ${parseInt(
         "58",

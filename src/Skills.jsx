@@ -11,7 +11,6 @@ import javaLogo from "../assets/java-logo.png";
 import pythonLogo from "../assets/python-logo.png";
 import mySqlLogo from "../assets/mysql-logo.png";
 import dsaLogo from "../assets/dsa.png";
-import framerMotion from "../assets/framer-motion.svg";
 
 export default function Skills() {
   const skills = [
@@ -20,7 +19,6 @@ export default function Skills() {
     { name: "Tailwind CSS", img: tailwindLogo },
     { name: "Vanilla JS", img: vanillaLogo },
     { name: "React.js", img: reactLogo },
-    // { name: "Framer Motion", img: framerMotion },
     { name: "Java", img: javaLogo },
     { name: "Python", img: pythonLogo },
     { name: "MySQL", img: mySqlLogo },

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
 :root {
   --primary: #e25822;
   --accent: #b22222;
@@ -1131,18 +1133,16 @@ body {
     top: 0;
     right: 0;
     height: 100vh;
-    width: 180px;
-    background: rgba(24, 24, 24, 0.7);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-left: 1px solid rgba(226, 88, 34, 0.3);
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.95);
     display: flex;
     flex-direction: column;
-    padding: 6rem 2rem;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
+    padding: 0;
     z-index: 999;
-    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.6),
-      -6px 0 18px rgba(226, 88, 34, 0.3);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
   }
 
   .nav-drawer li {
@@ -1151,11 +1151,14 @@ body {
 
   .nav-drawer a {
     color: var(--light-text);
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    color: var(--muted-text);
     text-decoration: none;
-    position: relative;
+    text-transform: uppercase;
     transition: color 0.3s ease, text-shadow 0.3s ease;
+    position: relative;
   }
 
   .nav-drawer a:hover {
@@ -1282,4 +1285,16 @@ body {
 .contact-btn i {
   position: relative;
   z-index: 1;
+}
+
+.nav-drawer a.active {
+  color: var(--primary);
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(226, 88, 34, 0.6);
+}
+
+@media (max-width: 450px) {
+  .name-header {
+    display: none;
+  }
 }
