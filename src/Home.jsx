@@ -1,85 +1,179 @@
-import "./style.css";
-import picOfMe from "../assets/picofme (7).webp";
-import { motion } from "framer-motion";
-
-const container = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      staggerChildren: 0.4,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1.2,
-      ease: "easeOut",
-    },
-  },
-};
-
-const imageVariant = {
-  hidden: { opacity: 0, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1.8,
-      ease: "easeInOut",
-    },
-  },
-};
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import "./Home.css";
 
 export default function Home() {
+  const canvasRef = useRef(null);
+  const [mousePos, setMousePos] = useState({
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
+  });
+
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 0.2], [0, -150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+    let time = 0;
+
+    const rootStyles = getComputedStyle(document.documentElement);
+    const primary = rootStyles.getPropertyValue("--primary").trim();
+    const accent = rootStyles.getPropertyValue("--accent").trim();
+
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
+
+    function drawAurora() {
+      ctx.clearRect(0, 0, width, height);
+
+      const layers = [
+        { speed: 0.5, offset: 0, opacity: 0.2 },
+        { speed: 0.3, offset: 50, opacity: 0.15 },
+        { speed: 0.4, offset: 100, opacity: 0.1 },
+      ];
+
+      layers.forEach((layer, i) => {
+        const gradient = ctx.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(
+          0,
+          `${primary}${Math.floor(layer.opacity * 255).toString(16)}`
+        );
+        gradient.addColorStop(
+          1,
+          `${accent}${Math.floor(layer.opacity * 255).toString(16)}`
+        );
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        for (let x = 0; x <= width; x += 5) {
+          const y =
+            height / 2 +
+            Math.sin(x * 0.01 + time * layer.speed + layer.offset) *
+              (100 + i * 20) +
+            Math.cos(x * 0.005 + time * layer.speed * 0.5) * 50;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.lineTo(width, height);
+        ctx.lineTo(0, height);
+        ctx.closePath();
+        ctx.fill();
+      });
+
+      const radial = ctx.createRadialGradient(
+        mousePos.x,
+        mousePos.y,
+        0,
+        mousePos.x,
+        mousePos.y,
+        300
+      );
+      radial.addColorStop(0, `${primary}33`);
+      radial.addColorStop(1, `${accent}00`);
+      ctx.fillStyle = radial;
+      ctx.fillRect(0, 0, width, height);
+
+      time += 0.02;
+      requestAnimationFrame(drawAurora);
+    }
+
+    drawAurora();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
-    <section id="home" className="section hero">
-      <motion.div
-        className="hero-img"
-        variants={imageVariant}
-        initial="hidden"
-        animate="visible"
-      >
-        <img src={picOfMe} alt="Pranjal Sahu" />
-      </motion.div>
+    <section id="home" className="hero sticky-hero">
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
 
       <motion.div
-        className="hero-content"
-        variants={container}
-        initial="hidden"
-        animate="visible"
+        className="glass-panel"
+        style={{ position: "relative", zIndex: 1, y, opacity }}
       >
-        <motion.h1 variants={item}>
-          <span className="typewriter">
-            Hi, I am <span className="name">Pranjal Sahu</span>
-          </span>
+        <motion.h1
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          Hi, I'm <span className="name">Pranjal</span>
         </motion.h1>
 
-        <motion.h2 className="work" variants={item}>
+        <motion.h2
+          className="glow-text"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+        >
           A Frontend Developer
         </motion.h2>
 
-        <motion.p className="hero-description" variants={item}>
-          I'm Pranjal Sahu, a passionate Frontend Developer specializing in
-          creating engaging, user-friendly websites and applications. I love
-          crafting clean code and beautiful designs that bring ideas to life.
+        <motion.p
+          className="hero-description"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+        >
+          I craft engaging, performant, and modern web experiences using the
+          latest technologies. With a passion for sleek design and smooth
+          animations, I turn ideas into interactive digital products.
         </motion.p>
 
-        <motion.a
-          href="https://drive.google.com/file/d/1qgfwbu4S9dREyCyacf2gA3N1xGzGmOoe/view?usp=drive_link"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="download-btn"
-          variants={item}
+        <motion.div
+          className="hero-buttons"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
         >
-          Download CV <i className="fas fa-arrow-up-right-from-square"></i>
-        </motion.a>
+          <motion.a
+            href="https://drive.google.com/file/d/1qgfwbu4S9dREyCyacf2gA3N1xGzGmOoe/view?usp=drive_link"
+            target="_blank"
+            className="primary"
+            download
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            Download CV
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            className="secondary"
+            animate={{ y: [0, -20, 0] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
+          >
+            Contact Me
+          </motion.a>
+        </motion.div>
       </motion.div>
     </section>
   );

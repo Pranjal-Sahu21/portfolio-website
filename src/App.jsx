@@ -6,6 +6,7 @@ import Skills from "./Skills";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import ParticleBackground from "./ParticleBackground";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import "./style.css";
@@ -116,6 +117,7 @@ export default function App() {
     <>
       <Header />
       <Home />
+      <ParticleBackground />
       <Journey />
       <Skills />
       <Projects />
