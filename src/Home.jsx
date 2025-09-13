@@ -71,19 +71,6 @@ export default function Home() {
         ctx.fill();
       });
 
-      const radial = ctx.createRadialGradient(
-        mousePos.x,
-        mousePos.y,
-        0,
-        mousePos.x,
-        mousePos.y,
-        300
-      );
-      radial.addColorStop(0, `${primary}33`);
-      radial.addColorStop(1, `${accent}00`);
-      ctx.fillStyle = radial;
-      ctx.fillRect(0, 0, width, height);
-
       time += 0.02;
       requestAnimationFrame(drawAurora);
     }
