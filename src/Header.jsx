@@ -7,9 +7,11 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 992);
   const [showHeader, setShowHeader] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
+  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       const desktop = window.innerWidth > 992;
@@ -20,12 +22,28 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Handle scroll
   useEffect(() => {
+    const sections = ["home", "journey", "skills", "projects", "contact"];
+
     const handleScroll = () => {
+      const scrollPos = window.scrollY + window.innerHeight / 2;
+
+      for (let section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+
       const homeSection = document.getElementById("home");
       if (!homeSection) return;
-      const homeHeight = homeSection.offsetHeight;
-      setShowHeader(window.scrollY > homeHeight);
+      setShowHeader(window.scrollY > homeSection.offsetHeight);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -53,6 +71,14 @@ export default function Header() {
     },
   };
 
+  const navLinks = [
+    { id: "home", label: "Home" },
+    { id: "journey", label: "Journey" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
     <AnimatePresence>
       {showHeader && (
@@ -72,18 +98,16 @@ export default function Header() {
 
           {isDesktop ? (
             <ul className="nav-links">
-              <li>
-                <a href="#journey">Journey</a>
-              </li>
-              <li>
-                <a href="#skills">Skills</a>
-              </li>
-              <li>
-                <a href="#projects">Projects</a>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className={activeSection === link.id ? "active" : ""}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           ) : (
             <AnimatePresence>
@@ -103,26 +127,17 @@ export default function Header() {
                     animate="visible"
                     exit="exit"
                   >
-                    <li>
-                      <a href="#journey" onClick={() => setMenuOpen(false)}>
-                        Journey
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#skills" onClick={() => setMenuOpen(false)}>
-                        Skills
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#projects" onClick={() => setMenuOpen(false)}>
-                        Projects
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#contact" onClick={() => setMenuOpen(false)}>
-                        Contact
-                      </a>
-                    </li>
+                    {navLinks.map((link) => (
+                      <li key={link.id}>
+                        <a
+                          href={`#${link.id}`}
+                          onClick={() => setMenuOpen(false)}
+                          className={activeSection === link.id ? "active" : ""}
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
                   </motion.ul>
                 </>
               )}

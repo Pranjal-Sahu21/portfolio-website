@@ -13,10 +13,10 @@ export default function ParticleBackground() {
     const particles = Array.from({ length: 100 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 2 + 0.5,
+      size: Math.random() * 3 + 1, // for triangle size
       speedX: (Math.random() - 0.5) * 0.3,
       speedY: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.3 + 0.1,
+      opacity: Math.random() * 0.5 + 0.3,
     }));
 
     const handleResize = () => {
@@ -25,6 +25,19 @@ export default function ParticleBackground() {
     };
     window.addEventListener("resize", handleResize);
 
+    function drawTriangle(x, y, size, color, opacity) {
+      ctx.beginPath();
+      ctx.moveTo(x, y - size / 2); // top vertex
+      ctx.lineTo(x - size / 2, y + size / 2); // bottom left
+      ctx.lineTo(x + size / 2, y + size / 2); // bottom right
+      ctx.closePath();
+      ctx.fillStyle = `rgba(${parseInt("e2", 16)}, ${parseInt(
+        "58",
+        16
+      )}, ${parseInt("22", 16)}, ${opacity})`;
+      ctx.fill();
+    }
+
     function animate() {
       ctx.clearRect(0, 0, width, height);
 
@@ -32,16 +45,12 @@ export default function ParticleBackground() {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        
         if (p.x > width) p.x = 0;
         if (p.x < 0) p.x = width;
         if (p.y > height) p.y = 0;
         if (p.y < 0) p.y = height;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
-        ctx.fill();
+        drawTriangle(p.x, p.y, p.size, "#e25822", p.opacity);
       });
 
       requestAnimationFrame(animate);
@@ -64,7 +73,6 @@ export default function ParticleBackground() {
         zIndex: 0,
         pointerEvents: "none",
         background: "#111",
-         
       }}
     />
   );

@@ -84,7 +84,9 @@ export default function Home() {
   }, []);
 
   return (
-    <section id="home" className="hero sticky-hero">
+    <motion.section
+    style={{ position: "relative", zIndex: 1, y, opacity }}
+     id="home" className="hero sticky-hero">
       <canvas
         ref={canvasRef}
         style={{
@@ -162,6 +164,6 @@ export default function Home() {
           </motion.a>
         </motion.div>
       </motion.div>
-    </section>
+    </motion.section>
   );
 }
