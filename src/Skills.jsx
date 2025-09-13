@@ -69,7 +69,7 @@ export default function Skills() {
     <section id="skills" ref={ref}>
       <h2 className="heading">My Skills</h2>
 
-      <motion.div
+      <div
         className="skills-grid"
         initial={{ opacity: 0 }}
         animate={
@@ -85,7 +85,7 @@ export default function Skills() {
             <p className="skill-name">{s.name}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       <div className="marquee-container">
         <div className="marquee-fade">
