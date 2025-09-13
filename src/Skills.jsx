@@ -1,6 +1,6 @@
 import "./style.css";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import htmlLogo from "../assets/html-logo.png";
 import cssLogo from "../assets/css-logo.png";
@@ -13,7 +13,7 @@ import mySqlLogo from "../assets/mysql-logo.png";
 import dsaLogo from "../assets/dsa.png";
 
 export default function Skills() {
-  const skills = [
+  const allSkills = [
     { name: "HTML", img: htmlLogo },
     { name: "CSS", img: cssLogo },
     { name: "Tailwind CSS", img: tailwindLogo },
@@ -25,25 +25,59 @@ export default function Skills() {
     { name: "DSA", img: dsaLogo },
   ];
 
+  const mid = Math.ceil(allSkills.length / 2);
+  const skillsGroup1 = allSkills.slice(0, mid);
+  const skillsGroup2 = allSkills.slice(mid);
+
   const ref = useRef(null);
+  const leftMarqueeRef = useRef(null);
+  const rightMarqueeRef = useRef(null);
+
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  const repeatCount = 3;
+  const marqueeGroup1 = Array(repeatCount).fill(skillsGroup1).flat();
+  const marqueeGroup2 = Array(repeatCount).fill(skillsGroup2).flat();
+
+  const [duration, setDuration] = useState(8);
+  const [marqueeWidth, setMarqueeWidth] = useState(0);
+
+  useEffect(() => {
+    const updateDuration = () => {
+      const width = window.innerWidth;
+      if (width < 480) setDuration(5);
+      else if (width < 768) setDuration(6.5);
+      else setDuration(8);
+    };
+    updateDuration();
+    window.addEventListener("resize", updateDuration);
+    return () => window.removeEventListener("resize", updateDuration);
+  }, []);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (leftMarqueeRef.current && rightMarqueeRef.current) {
+        setMarqueeWidth(leftMarqueeRef.current.scrollWidth / 3);
+      }
+    };
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
   return (
     <section id="skills" ref={ref}>
       <h2 className="heading">My Skills</h2>
+
       <motion.div
         className="skills-grid"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={
           isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }
         }
-        transition={{
-          type: "spring",
-          stiffness: 50,
-          damping: 20,
-        }}
+        transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
-        {skills.map((s) => (
+        {allSkills.map((s) => (
           <div className="skill-item" key={s.name}>
             <div className="skill-icon">
               <img src={s.img} alt={s.name} />
@@ -52,6 +86,44 @@ export default function Skills() {
           </div>
         ))}
       </motion.div>
+
+      <div className="marquee-container">
+        <div className="marquee-fade">
+          <motion.div
+            className="marquee"
+            animate={{ x: [0, -marqueeWidth] }}
+            transition={{ repeat: Infinity, duration, ease: "linear" }}
+            ref={leftMarqueeRef}
+          >
+            {marqueeGroup1.map((s, i) => (
+              <div className="skill-item" key={i}>
+                <div className="skill-icon">
+                  <img src={s.img} alt={s.name} />
+                </div>
+                <p className="skill-name">{s.name}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="marquee-fade">
+          <motion.div
+            className="marquee"
+            animate={{ x: [-marqueeWidth, 0] }}
+            transition={{ repeat: Infinity, duration, ease: "linear" }}
+            ref={rightMarqueeRef}
+          >
+            {marqueeGroup2.map((s, i) => (
+              <div className="skill-item" key={i + "right"}>
+                <div className="skill-icon">
+                  <img src={s.img} alt={s.name} />
+                </div>
+                <p className="skill-name">{s.name}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
