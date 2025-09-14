@@ -4,15 +4,10 @@ import "./Home.css";
 
 export default function Home() {
   const canvasRef = useRef(null);
-  const [mousePos, setMousePos] = useState({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-  });
 
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 0.2], [0, -150]);
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -25,68 +20,87 @@ export default function Home() {
     const primary = rootStyles.getPropertyValue("--primary").trim();
     const accent = rootStyles.getPropertyValue("--accent").trim();
 
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", handleMouseMove);
-
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
     window.addEventListener("resize", handleResize);
 
-    function drawAurora() {
+    const numStars = 200;
+    const stars = [];
+    for (let i = 0; i < numStars; i++) {
+      const color = "rgba(200, 200, 200, ";
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        opacity: Math.random(),
+        delta: Math.random() * 0.02 + 0.005,
+        color,
+      });
+    }
+
+    const numPlanets = 5;
+    const orbitRadiusX = Math.min(width, height) * 0.35;
+    const orbitRadiusY = Math.min(width, height) * 0.2;
+    const planets = [];
+    for (let i = 0; i < numPlanets; i++) {
+      const angle = (i / numPlanets) * Math.PI * 2;
+      planets.push({
+        angle,
+        radius: 40 + Math.random() * 40,
+        speed: 0.002 + Math.random() * 0.001,
+        color: Math.random() < 0.5 ? primary : accent,
+      });
+    }
+
+    function drawScene() {
       ctx.clearRect(0, 0, width, height);
 
-      const layers = [
-        { speed: 0.5, offset: 0, opacity: 0.2 },
-        { speed: 0.3, offset: 50, opacity: 0.15 },
-        { speed: 0.4, offset: 100, opacity: 0.1 },
-      ];
+      stars.forEach((star) => {
+        star.opacity += star.delta;
+        if (star.opacity > 1 || star.opacity < 0) star.delta *= -1;
 
-      layers.forEach((layer, i) => {
-        const gradient = ctx.createLinearGradient(0, 0, width, height);
-        gradient.addColorStop(
-          0,
-          `${primary}${Math.floor(layer.opacity * 255).toString(16)}`
-        );
-        gradient.addColorStop(
-          1,
-          `${accent}${Math.floor(layer.opacity * 255).toString(16)}`
-        );
+        ctx.fillStyle = `${star.color}${Math.floor(star.opacity * 255)
+          .toString(16)
+          .padStart(2, "0")}`;
 
-        ctx.fillStyle = gradient;
         ctx.beginPath();
-        for (let x = 0; x <= width; x += 5) {
-          const y =
-            height / 2 +
-            Math.sin(x * 0.01 + time * layer.speed + layer.offset) *
-              (100 + i * 20) +
-            Math.cos(x * 0.005 + time * layer.speed * 0.5) * 50;
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.lineTo(width, height);
-        ctx.lineTo(0, height);
-        ctx.closePath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      time += 0.02;
-      requestAnimationFrame(drawAurora);
+      planets.forEach((p) => {
+        const x = width / 2 + Math.cos(p.angle + time * p.speed) * orbitRadiusX;
+        const y =
+          height / 2 + Math.sin(p.angle + time * p.speed) * orbitRadiusY;
+
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, p.radius);
+        gradient.addColorStop(0, `${p.color}FF`);
+        gradient.addColorStop(0.7, `${p.color}66`);
+        gradient.addColorStop(1, `${p.color}00`);
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(x, y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      time += 1;
+      requestAnimationFrame(drawScene);
     }
 
-    drawAurora();
+    drawScene();
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <motion.section
-    style={{ position: "relative", zIndex: 1, y, opacity }}
-     id="home" className="hero sticky-hero">
+      style={{ position: "relative", zIndex: 1, y, opacity }}
+      id="home"
+      className="hero sticky-hero"
+    >
       <canvas
         ref={canvasRef}
         style={{

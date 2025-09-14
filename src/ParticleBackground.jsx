@@ -10,13 +10,12 @@ export default function ParticleBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // particles that only fall down
-    const particles = Array.from({ length: 500 }, () => ({
+    const particles = Array.from({ length: 250 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 3 + 1,
-      speedX: 0, // no horizontal motion
-      speedY: Math.random() * 0.6 + 0.2, // downward velocity
+      speedX: 0,
+      speedY: Math.random() * 0.6 + 0.2,
       opacity: Math.random() * 0.5 + 0.3,
     }));
 
@@ -32,10 +31,7 @@ export default function ParticleBackground() {
       ctx.lineTo(x - size / 2, y + size / 2);
       ctx.lineTo(x + size / 2, y + size / 2);
       ctx.closePath();
-      ctx.fillStyle = `rgba(${parseInt("e2", 16)}, ${parseInt(
-        "58",
-        16
-      )}, ${parseInt("22", 16)}, ${opacity})`;
+      ctx.fillStyle = `rgba(220, 220, 220, ${opacity})`;
       ctx.fill();
     }
 
@@ -46,9 +42,8 @@ export default function ParticleBackground() {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        // reset particle when it falls off bottom
         if (p.y > height) {
-          p.y = -p.size; // restart above canvas
+          p.y = -p.size;
           p.x = Math.random() * width;
         }
 
