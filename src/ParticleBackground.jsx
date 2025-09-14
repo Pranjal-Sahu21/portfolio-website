@@ -10,12 +10,13 @@ export default function ParticleBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const particles = Array.from({ length: 100 }, () => ({
+    // particles that only fall down
+    const particles = Array.from({ length: 500 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 3 + 1,
-      speedX: (Math.random() - 0.5) * 0.3,
-      speedY: (Math.random() - 0.5) * 0.3,
+      speedX: 0, // no horizontal motion
+      speedY: Math.random() * 0.6 + 0.2, // downward velocity
       opacity: Math.random() * 0.5 + 0.3,
     }));
 
@@ -25,7 +26,7 @@ export default function ParticleBackground() {
     };
     window.addEventListener("resize", handleResize);
 
-    function drawTriangle(x, y, size, color, opacity) {
+    function drawTriangle(x, y, size, opacity) {
       ctx.beginPath();
       ctx.moveTo(x, y - size / 2);
       ctx.lineTo(x - size / 2, y + size / 2);
@@ -45,12 +46,13 @@ export default function ParticleBackground() {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        if (p.x > width) p.x = 0;
-        if (p.x < 0) p.x = width;
-        if (p.y > height) p.y = 0;
-        if (p.y < 0) p.y = height;
+        // reset particle when it falls off bottom
+        if (p.y > height) {
+          p.y = -p.size; // restart above canvas
+          p.x = Math.random() * width;
+        }
 
-        drawTriangle(p.x, p.y, p.size, "#e25822", p.opacity);
+        drawTriangle(p.x, p.y, p.size, p.opacity);
       });
 
       requestAnimationFrame(animate);

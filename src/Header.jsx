@@ -41,7 +41,7 @@ export default function Header() {
 
       const homeSection = document.getElementById("home");
       if (!homeSection) return;
-      setShowHeader(window.scrollY > homeSection.offsetHeight);
+      setShowHeader(window.scrollY > homeSection.offsetHeight / 2);
     };
 
     window.addEventListener("scroll", handleScroll);

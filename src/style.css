@@ -655,7 +655,7 @@ ul.nav-links li a:hover {
 
 .nav-links a.active {
   color: var(--primary);
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 @media (max-width: 992px) {
@@ -847,9 +847,6 @@ footer .social-icons a:hover {
   }
 }
 
-.journey-card:hover {
-  box-shadow: 0 0 8px 2px var(--primary), 0 0 15px 6px rgba(226, 88, 34, 0.5);
-}
 .contact-card input,
 .contact-card textarea {
   background: rgba(40, 40, 40, 0.85);
@@ -1290,7 +1287,7 @@ body {
 
 .nav-drawer a.active {
   color: var(--primary);
-  font-weight: bold;
+  font-weight: bolder;
   text-shadow: 0 0 8px rgba(226, 88, 34, 0.6);
 }
 
