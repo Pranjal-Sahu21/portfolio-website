@@ -26,7 +26,7 @@ export default function Home() {
     };
     window.addEventListener("resize", handleResize);
 
-    const numStars = 200;
+    const numStars = 50;
     const stars = [];
     for (let i = 0; i < numStars; i++) {
       const color = "rgba(200, 200, 200, ";
