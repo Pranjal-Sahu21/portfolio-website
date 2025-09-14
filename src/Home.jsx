@@ -16,10 +16,6 @@ export default function Home() {
     let height = (canvas.height = window.innerHeight);
     let time = 0;
 
-    const rootStyles = getComputedStyle(document.documentElement);
-    const primary = rootStyles.getPropertyValue("--primary").trim();
-    const accent = rootStyles.getPropertyValue("--accent").trim();
-
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
@@ -40,20 +36,6 @@ export default function Home() {
       });
     }
 
-    const numPlanets = 5;
-    const orbitRadiusX = Math.min(width, height) * 0.35;
-    const orbitRadiusY = Math.min(width, height) * 0.2;
-    const planets = [];
-    for (let i = 0; i < numPlanets; i++) {
-      const angle = (i / numPlanets) * Math.PI * 2;
-      planets.push({
-        angle,
-        radius: 40 + Math.random() * 40,
-        speed: 0.002 + Math.random() * 0.001,
-        color: Math.random() < 0.5 ? primary : accent,
-      });
-    }
-
     function drawScene() {
       ctx.clearRect(0, 0, width, height);
 
@@ -67,22 +49,6 @@ export default function Home() {
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      planets.forEach((p) => {
-        const x = width / 2 + Math.cos(p.angle + time * p.speed) * orbitRadiusX;
-        const y =
-          height / 2 + Math.sin(p.angle + time * p.speed) * orbitRadiusY;
-
-        const gradient = ctx.createRadialGradient(x, y, 0, x, y, p.radius);
-        gradient.addColorStop(0, `${p.color}FF`);
-        gradient.addColorStop(0.7, `${p.color}66`);
-        gradient.addColorStop(1, `${p.color}00`);
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(x, y, p.radius, 0, Math.PI * 2);
         ctx.fill();
       });
 
