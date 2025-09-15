@@ -14,7 +14,6 @@ export default function Home() {
 
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
-    let time = 0;
 
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
@@ -36,6 +35,23 @@ export default function Home() {
       });
     }
 
+    let shootingStar = null;
+    let nextShootTime = Date.now() + Math.random() * 4000 + 2000;
+
+    function spawnShootingStar() {
+      const fromLeft = Math.random() < 0.5;
+
+      shootingStar = {
+        x: fromLeft ? -100 : width + 100,
+        y: -100,
+        vx: fromLeft ? 5 : -5,
+        vy: 5,
+        length: 250,
+        life: 0,
+        maxLife: 300,
+      };
+    }
+
     function drawScene() {
       ctx.clearRect(0, 0, width, height);
 
@@ -52,7 +68,42 @@ export default function Home() {
         ctx.fill();
       });
 
-      time += 1;
+      if (shootingStar) {
+        const { x, y, vx, vy, length, life, maxLife } = shootingStar;
+
+        const opacity = 1 - life / maxLife;
+
+        const trailEndX = x - vx * length;
+        const trailEndY = y - vy * length;
+        const gradient = ctx.createLinearGradient(x, y, trailEndX, trailEndY);
+        gradient.addColorStop(0, `rgba(255,255,255,${opacity})`);
+        gradient.addColorStop(0.3, `rgba(255,255,255,${opacity * 0.6})`);
+        gradient.addColorStop(1, `rgba(255,255,255,0)`);
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(trailEndX, trailEndY);
+        ctx.stroke();
+
+        ctx.fillStyle = `rgba(255,255,255,${opacity})`;
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        shootingStar.x += vx;
+        shootingStar.y += vy;
+        shootingStar.life += 1;
+
+        if (shootingStar.life > maxLife) {
+          shootingStar = null;
+          nextShootTime = Date.now() + Math.random() * 5000 + 3000;
+        }
+      } else if (Date.now() > nextShootTime) {
+        spawnShootingStar();
+      }
+
       requestAnimationFrame(drawScene);
     }
 
