@@ -212,6 +212,7 @@ ul.nav-links li a:hover {
 }
 
 .project-card {
+  text-align: center;
   background: var(--card-bg);
   border-radius: 10px;
   padding: 20px;
@@ -242,7 +243,8 @@ ul.nav-links li a:hover {
 
 .project-desc {
   color: var(--muted-text);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  margin-top: 12px;
 }
 
 .project-img {
@@ -555,11 +557,6 @@ section {
   perspective: 800px;
   position: relative;
   overflow: hidden;
-}
-
-.card-vibe:hover {
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6), 0 0 18px 3px var(--primary),
-    0 0 30px 8px rgba(226, 88, 34, 0.5);
 }
 
 .card-vibe::before {
@@ -980,7 +977,6 @@ nav {
 .contact-card button:active {
   transform: scale(0.95) translateY(2px);
   box-shadow: 0 0 8px rgba(226, 88, 34, 0.6), inset 0 0 6px rgba(0, 0, 0, 0.6);
-  background: linear-gradient(90deg, var(--accent), var(--primary));
 }
 
 .contact-card textarea {
@@ -1006,11 +1002,6 @@ body {
 body {
   background-size: cover !important;
   background-attachment: fixed !important;
-}
-
-.contact-section form:hover {
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6), 0 0 18px 3px var(--primary),
-    0 0 30px 8px rgba(226, 88, 34, 0.5);
 }
 
 ::selection {
@@ -1403,4 +1394,144 @@ nav {
   height: clamp(72px, 6vw, 100px);
   top: 0;
   z-index: 1000;
+}
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  perspective: 1500px;
+  margin-top: 3rem;
+  position: relative;
+  transform: rotate(-5deg);
+}
+
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 12%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(17, 17, 17, 1),
+    rgba(17, 17, 17, 0)
+  );
+}
+
+.marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(17, 17, 17, 1),
+    rgba(17, 17, 17, 0)
+  );
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+}
+
+.project-card-3d {
+  flex: 0 0 80%;
+  max-width: 500px;
+  height: auto;
+  aspect-ratio: 5/4;
+  background: rgba(24, 24, 24, 0.9);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  transform: rotateY(40deg) rotateX(15deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .project-card-3d {
+    flex: 0 0 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card-3d {
+    flex: 0 0 100%;
+  }
+}
+
+.project-card-3d img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.project-card-3d h2 {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.desktop-marquee {
+  display: flex;
+  gap: 1rem;
+}
+
+.mobile-cards {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .desktop-marquee {
+    display: none;
+  }
+
+  .marquee-wrapper {
+    transform: rotate(0);
+  }
+
+  .mobile-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding: 1rem;
+  }
+
+  .mobile-cards .project-card {
+    width: 100%;
+    max-width: 400px;
+    transform: none;
+    padding: 1rem;
+  }
+
+  .mobile-cards img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+
+  .mobile-cards h2 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    word-break: break-word;
+    text-align: center;
+  }
+
+  .mobile-cards p {
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+    word-break: break-word;
+    text-align: center;
+  }
 }
