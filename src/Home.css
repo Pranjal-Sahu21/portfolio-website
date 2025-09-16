@@ -34,9 +34,11 @@
   font-weight: 400;
   margin-top: 48px;
   margin-bottom: 48px;
+
 }
 
 .hero-buttons a {
+  font-family: "Montserrat", sans-serif;
   padding: 14px 28px;
   border-radius: 10px;
   font-size: 1rem;
@@ -138,5 +140,6 @@ canvas {
 }
 
 .glow-text {
-    margin-top: 36px;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 36px;
 }

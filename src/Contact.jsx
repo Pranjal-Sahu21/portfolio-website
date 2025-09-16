@@ -20,7 +20,7 @@ export default function Contact() {
           damping: 20,
         }}
       >
-        Contact Me
+        Contact me
       </motion.h1>
 
       {state.succeeded ? (
@@ -65,14 +65,13 @@ export default function Contact() {
           <ValidationError prefix="Email" field="email" errors={state.errors} />
 
           <input type="text" name="subject" placeholder="Subject" required />
-          <ValidationError prefix="Subject" field="subject" errors={state.errors} />
-
-          <textarea
-            name="message"
-            placeholder="Message"
-            rows="5"
-            required
+          <ValidationError
+            prefix="Subject"
+            field="subject"
+            errors={state.errors}
           />
+
+          <textarea name="message" placeholder="Message" rows="5" required />
           <ValidationError
             prefix="Message"
             field="message"
@@ -95,10 +94,7 @@ export default function Contact() {
           delay: 0.4,
         }}
       >
-        <a 
-          href="https://www.instagram.com/prsahu_21/?next=%2F" 
-          target="_blank"
-        >
+        <a href="https://www.instagram.com/prsahu_21/?next=%2F" target="_blank">
           <i className="fab fa-instagram"></i>
         </a>
         <a
@@ -114,6 +110,12 @@ export default function Contact() {
           rel="noreferrer"
         >
           <i className="fab fa-github"></i>
+        </a>
+        <a 
+          href="tel:+918895596189" 
+          target="_blank" 
+          rel="noreferrer">
+          <i className="fas fa-phone"></i>
         </a>
       </motion.div>
     </section>

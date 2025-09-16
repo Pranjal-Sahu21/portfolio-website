@@ -73,7 +73,7 @@ export default function Skills() {
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
       transition={{ type: "spring", stiffness: 50, damping: 20 }}
     >
-      <h2 className="heading">My Skills</h2>
+      <h2 className="heading">Skills</h2>
 
       <div className="skills-grid">
         {allSkills.map((s) => (

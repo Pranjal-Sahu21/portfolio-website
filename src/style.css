@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 :root {
   --primary: #e25822;
   --accent: #b22222;
@@ -235,6 +235,7 @@ ul.nav-links li a:hover {
     var(--accent) 50%,
     var(--primary) 100%
   );
+  font-family: "Montserrat", sans-serif;
   background-size: 200% auto;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -699,6 +700,7 @@ ul.nav-links li a:hover {
 }
 
 .name {
+  font-family: "Montserrat", sans-serif;
   animation: shimmer 3s linear infinite, flicker 3s infinite;
 }
 
@@ -877,7 +879,6 @@ footer .social-icons a:hover {
 }
 
 .contact-card button:hover {
-  transform: scale(1.08);
   box-shadow: 0 0 20px rgba(226, 88, 34, 0.8), 0 0 35px rgba(178, 34, 34, 0.6);
 }
 
@@ -886,6 +887,7 @@ footer .social-icons a:hover {
 }
 
 .heading {
+  font-family: "Montserrat", sans-serif;
   background: linear-gradient(90deg, var(--primary), var(--accent));
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1537,3 +1539,10 @@ nav {
   }
 }
 
+.social-icons i.fa-phone {
+  font-size: 18px;
+}
+
+.contact-section button {
+  font-family: "Montserrat", sans-serif;
+}

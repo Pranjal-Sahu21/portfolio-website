@@ -7,7 +7,7 @@ export default function Journey() {
     {
       title: "National Institute Of Technology, Rourkela",
       details: [
-        "B.Tech in Computer Science",
+        "B.Tech in Computer Science & Engineering",
         "(2024 - Present)",
         "CGPA - 8.48",
       ],
@@ -79,9 +79,9 @@ export default function Journey() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
             >
-              <h3>{journey.title}</h3>
+              <h3 className="journey-title">{journey.title}</h3>
               {journey.details.map((line, i) => (
-                <p key={i}>{line}</p>
+                <p className="journey-desc" key={i}>{line}</p>
               ))}
             </motion.div>
           );

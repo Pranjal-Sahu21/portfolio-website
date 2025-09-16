@@ -45,7 +45,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section projects-section">
-      <h1 className="heading">My Projects</h1>
+      <h1 className="heading">Projects</h1>
 
       <motion.div
         className="marquee-wrapper"
