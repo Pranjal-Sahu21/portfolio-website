@@ -49,8 +49,8 @@ export default function Projects() {
 
       <motion.div
         className="marquee-wrapper"
-        initial={window.innerWidth > 768 ? { rotate: 0 } : undefined}
-        whileInView={window.innerWidth > 768 ? { rotate: -5} : undefined}
+        initial={window.innerWidth > 768 ? { opacity: 0, rotate: 0 } : undefined}
+        whileInView={window.innerWidth > 768 ? { opacity: 1, rotate: -5} : undefined}
         viewport={{ once: true, amount: 0.3 }}
         transition={
           window.innerWidth > 768
