@@ -1450,9 +1450,10 @@ nav {
   padding: 1rem;
   text-align: center;
   color: white;
-  transform: rotateY(40deg) rotateX(15deg);
+  transform: rotateY(40deg) rotateX(30deg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
+  margin-left: -84px;
 }
 
 @media (max-width: 768px) {
@@ -1535,3 +1536,4 @@ nav {
     text-align: center;
   }
 }
+
