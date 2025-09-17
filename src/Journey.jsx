@@ -49,13 +49,12 @@ export default function Journey() {
     <section id="journey" className="section">
       <motion.h2
         ref={headingRef}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 80 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
         transition={{
           type: "spring",
-          stiffness: 100,
+          stiffness: 50,
           damping: 20,
-          duration: 0.8,
         }}
         className="heading"
       >
@@ -81,7 +80,9 @@ export default function Journey() {
             >
               <h3 className="journey-title">{journey.title}</h3>
               {journey.details.map((line, i) => (
-                <p className="journey-desc" key={i}>{line}</p>
+                <p className="journey-desc" key={i}>
+                  {line}
+                </p>
               ))}
             </motion.div>
           );

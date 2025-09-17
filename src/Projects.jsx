@@ -1,5 +1,6 @@
 import "./style.css";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import {useRef} from "react";
 
 import cheeType from "../assets/cheetype.png";
 import tasteGpt from "../assets/tastegpt.png";
@@ -8,6 +9,8 @@ import plannix from "../assets/plannix.png";
 import greenTech from "../assets/greentech.png";
 
 export default function Projects() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const projects = [
     {
       title: "CheeType",
@@ -45,12 +48,28 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section projects-section">
-      <h1 className="heading">Projects</h1>
+      <motion.h1
+        ref={ref}
+        className="heading"
+        initial={{ opacity: 0, y: 80 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+        transition={{
+          type: "spring",
+          stiffness: 50,
+          damping: 20,
+        }}
+      >
+        Projects
+      </motion.h1>
 
       <motion.div
         className="marquee-wrapper"
-        initial={window.innerWidth > 768 ? { opacity: 0, rotate: 0 } : undefined}
-        whileInView={window.innerWidth > 768 ? { opacity: 1, rotate: -5} : undefined}
+        initial={
+          window.innerWidth > 768 ? { opacity: 0, rotate: 0 } : undefined
+        }
+        whileInView={
+          window.innerWidth > 768 ? { opacity: 1, rotate: -5 } : undefined
+        }
         viewport={{ once: true, amount: 0.3 }}
         transition={
           window.innerWidth > 768
