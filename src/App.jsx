@@ -81,32 +81,6 @@ export default function App() {
       });
     });
 
-    const cards = document.querySelectorAll(".card-vibe");
-    cards.forEach((card) => {
-      card.addEventListener("mousemove", (e) => {
-        if (window.innerWidth <= 992) return;
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
-
-        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        card.style.setProperty("--x", `${x - rect.width / 2}px`);
-        card.style.setProperty("--y", `${y - rect.height / 2}px`);
-      });
-
-      card.addEventListener("mouseleave", () => {
-        if (window.innerWidth <= 992) return;
-        card.style.transform = "perspective(800px) rotateX(0) rotateY(0)";
-        card.style.setProperty("--x", "0px");
-        card.style.setProperty("--y", "0px");
-      });
-    });
-
     return () => {
       window.removeEventListener("scroll", onScroll);
       sections.forEach((section) => observer.unobserve(section));

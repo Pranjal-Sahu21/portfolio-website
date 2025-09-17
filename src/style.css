@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
 :root {
   --primary: #e25822;
   --accent: #b22222;
@@ -140,28 +140,6 @@ ul.nav-links li a:hover {
   justify-content: space-around;
   padding-top: 60px;
   margin-top: 32px;
-}
-
-.hero-img {
-  border-radius: 50%;
-  width: 20vw;
-  height: 20vw;
-  max-width: 480px;
-  max-height: 480px;
-  min-width: 160px;
-  min-height: 160px;
-  overflow: hidden;
-  transition: all 0.25s;
-}
-
-.hero-img:hover {
-  transform: scale(1.025);
-  box-shadow: 0 0 8px 2px var(--primary), 0 0 15px 6px rgba(226, 88, 34, 0.5);
-}
-
-.hero-img img {
-  width: 100%;
-  object-fit: cover;
 }
 
 .hero h1 {
@@ -473,10 +451,6 @@ footer {
     flex-direction: column;
     text-align: center;
   }
-  .hero-img {
-    width: 160px;
-    height: 160px;
-  }
   #theme-toggle {
     position: absolute;
     right: 40px;
@@ -484,7 +458,6 @@ footer {
     margin-left: 0;
   }
 }
-
 
 @keyframes shimmer {
   to {
