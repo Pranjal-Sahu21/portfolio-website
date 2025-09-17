@@ -116,7 +116,7 @@
   }
 }
 
-@media (max-width: 366px) {
+@media (max-width: 400px) {
   .hero-buttons .secondary {
     display: none;
   }
