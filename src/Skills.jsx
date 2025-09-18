@@ -29,11 +29,14 @@ export default function Skills() {
   const skillsGroup1 = allSkills.slice(0, mid);
   const skillsGroup2 = allSkills.slice(mid);
 
-  const ref = useRef(null);
+  const headingRef = useRef(null);
+  const headingInView = useInView(headingRef, { once: true, amount: 0.3 });
+
+  const gridRef = useRef(null);
+  const gridInView = useInView(gridRef, { once: true, amount: 0.3 });
+
   const leftMarqueeRef = useRef(null);
   const rightMarqueeRef = useRef(null);
-
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const repeatCount = 3;
   const marqueeGroup1 = Array(repeatCount).fill(skillsGroup1).flat();
@@ -68,23 +71,20 @@ export default function Skills() {
   return (
     <section id="skills">
       <motion.h2
+        ref={headingRef}
         className="heading"
         initial={{ opacity: 0, y: 80 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
-        transition={{
-          type: "spring",
-          stiffness: 50,
-          damping: 20,
-        }}
+        animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+        transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
         Skills
       </motion.h2>
 
       <motion.div
-        ref={ref}
+        ref={gridRef}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={
-          isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+          gridInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
         }
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
         className="skills-grid"
