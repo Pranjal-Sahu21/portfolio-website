@@ -1488,7 +1488,7 @@ nav {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: var(--accent);
+  background: var(--card-bg);
   border-radius: 2px;
 }
 
@@ -1513,7 +1513,7 @@ nav {
   position: relative;
   width: 49%;
   background: rgba(24, 24, 24, 0.65);
-  border-radius: 14px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: left;
   padding: 20px;
