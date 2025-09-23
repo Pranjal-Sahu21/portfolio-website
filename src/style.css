@@ -1476,7 +1476,7 @@ nav {
   flex-direction: column;
   gap: 60px;
   width: 100%;
-  max-width: 900px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
