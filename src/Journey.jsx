@@ -1,5 +1,5 @@
 import "./style.css";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll } from "framer-motion";
 import { useRef } from "react";
 
 export default function Journey() {
@@ -23,6 +23,12 @@ export default function Journey() {
 
   const headingRef = useRef(null);
   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.3 });
+
+  const timelineRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start end", "end start"],
+  });
 
   const cardVariants = (index) => ({
     hidden: {
@@ -49,17 +55,18 @@ export default function Journey() {
         ref={headingRef}
         initial={{ opacity: 0, y: 80 }}
         animate={isHeadingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
-        transition={{
-          type: "spring",
-          stiffness: 50,
-          damping: 20,
-        }}
+        transition={{ type: "spring", stiffness: 50, damping: 20 }}
         className="heading"
       >
         My Journey
       </motion.h2>
 
-      <div className="journey-container">
+      <div className="journey-container" ref={timelineRef}>
+        <motion.div
+          className="timeline-progress"
+          style={{ scaleY: scrollYProgress }}
+        />
+
         {journeyData.map((journey, index) => {
           const cardRef = useRef(null);
           const isCardInView = useInView(cardRef, {
@@ -80,7 +87,11 @@ export default function Journey() {
               >
                 <h3 className="journey-title">{journey.title}</h3>
                 {journey.details.map((line, i) => (
-                  <p className="journey-desc" style={{color: "#8f8b8bff"}} key={i}>
+                  <p
+                    className="journey-desc"
+                    style={{ color: "#8f8b8bff" }}
+                    key={i}
+                  >
                     {line}
                   </p>
                 ))}
