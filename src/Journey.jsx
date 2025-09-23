@@ -6,19 +6,18 @@ export default function Journey() {
   const journeyData = [
     {
       title: "National Institute Of Technology, Rourkela",
-      details: [
-        "B.Tech in Computer Science & Engineering",
-        "(2024 - Present)",
-        "CGPA - 8.48",
-      ],
+      details: ["B.Tech in Computer Science & Engineering", "(2024 - Present)"],
+      grade: ["CGPA - 8.48"],
     },
     {
       title: "SAI International School, Bhubaneswar",
-      details: ["12th Boards", "(2022 - 2024)", "Grade: 92.2%"],
+      details: ["12th Boards", "(2022 - 2024)"],
+      grade: ["Grade: 92.2%"],
     },
     {
       title: "Vikash Convent School, Karanjia",
-      details: ["10th Boards", "(2021 - 2022)", "Grade: 96.2%"],
+      details: ["10th Boards", "(2021 - 2022)"],
+      grade: ["Grade: 96.2%"],
     },
   ];
 
@@ -81,7 +80,12 @@ export default function Journey() {
               >
                 <h3 className="journey-title">{journey.title}</h3>
                 {journey.details.map((line, i) => (
-                  <p className="journey-desc" key={i}>
+                  <p className="journey-desc" style={{color: "#8f8b8bff"}} key={i}>
+                    {line}
+                  </p>
+                ))}
+                {journey.grade.map((line, i) => (
+                  <p className="journey-grade" key={i}>
                     {line}
                   </p>
                 ))}
