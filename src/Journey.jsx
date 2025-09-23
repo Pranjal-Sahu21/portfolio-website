@@ -23,13 +23,13 @@ export default function Journey() {
   ];
 
   const headingRef = useRef(null);
-  const isInView = useInView(headingRef, { once: true, amount: 0.3 });
+  const isHeadingInView = useInView(headingRef, { once: true, amount: 0.3 });
 
-  const cardVariants = (direction) => ({
+  const cardVariants = (index) => ({
     hidden: {
       opacity: 0,
-      x: direction === "left" ? -400 : direction === "right" ? 400 : 0,
-      y: window.innerWidth < 768 ? 30 : 0,
+      x: index % 2 === 0 ? -100 : 100,
+      y: 0,
     },
     visible: {
       opacity: 1,
@@ -39,7 +39,6 @@ export default function Journey() {
         type: "spring",
         stiffness: 50,
         damping: 20,
-        mass: 1,
         opacity: { duration: 0.8, ease: "easeInOut" },
       },
     },
@@ -50,7 +49,7 @@ export default function Journey() {
       <motion.h2
         ref={headingRef}
         initial={{ opacity: 0, y: 80 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+        animate={isHeadingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
         transition={{
           type: "spring",
           stiffness: 50,
@@ -64,27 +63,30 @@ export default function Journey() {
       <div className="journey-container">
         {journeyData.map((journey, index) => {
           const cardRef = useRef(null);
-          const isInView = useInView(cardRef, {
+          const isCardInView = useInView(cardRef, {
             once: true,
             margin: "-30% 0px",
           });
 
           return (
-            <motion.div
-              key={index}
-              ref={cardRef}
-              className="journey-card"
-              variants={cardVariants(index % 2 === 0 ? "left" : "right")}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-            >
-              <h3 className="journey-title">{journey.title}</h3>
-              {journey.details.map((line, i) => (
-                <p className="journey-desc" key={i}>
-                  {line}
-                </p>
-              ))}
-            </motion.div>
+            <div key={index} className="timeline-item">
+              <div className="timeline-dot"></div>
+
+              <motion.div
+                ref={cardRef}
+                className={`journey-card ${index % 2 === 0 ? "left" : "right"}`}
+                variants={cardVariants(index)}
+                initial="hidden"
+                animate={isCardInView ? "visible" : "hidden"}
+              >
+                <h3 className="journey-title">{journey.title}</h3>
+                {journey.details.map((line, i) => (
+                  <p className="journey-desc" key={i}>
+                    {line}
+                  </p>
+                ))}
+              </motion.div>
+            </div>
           );
         })}
       </div>
