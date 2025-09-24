@@ -1,5 +1,5 @@
 import "./style.css";
-import { motion, useInView, useScroll } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 export default function Journey() {
@@ -25,11 +25,6 @@ export default function Journey() {
   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.3 });
 
   const timelineRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start end", "end start"],
-  });
-
   const cardVariants = (index) => ({
     hidden: {
       opacity: 0,
@@ -62,11 +57,6 @@ export default function Journey() {
       </motion.h2>
 
       <div className="journey-container" ref={timelineRef}>
-        <motion.div
-          className="timeline-progress"
-          style={{ scaleY: scrollYProgress }}
-        />
-
         {journeyData.map((journey, index) => {
           const cardRef = useRef(null);
           const isCardInView = useInView(cardRef, {

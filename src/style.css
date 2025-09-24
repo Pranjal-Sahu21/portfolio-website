@@ -1483,7 +1483,6 @@ nav {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 20px;
   width: 20px;
   height: 20px;
   background: var(--primary);
@@ -1540,19 +1539,6 @@ nav {
   }
 }
 
-.timeline-progress {
-  position: absolute;
-  left: calc(50% - 2px);
-  transform: translateX(-50%);
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--primary);
-  transform-origin: top;
-  transform: scaleY(0);
-  border-radius: 2px;
-}
-
 @media (max-width: 768px) {
   .journey-card,
   .journey-card.left,
@@ -1574,10 +1560,6 @@ nav {
     width: 4px;
   }
 
-  .timeline-progress {
-    left: 30px;
-  }
-
   .journey-card h3 {
     font-size: 1.1rem;
     margin-bottom: 15px;
@@ -1592,5 +1574,3 @@ nav {
     gap: 40px;
   }
 }
-
-
