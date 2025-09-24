@@ -618,25 +618,7 @@ ul.nav-links li a:hover {
 
 .name {
   font-family: "Montserrat", sans-serif;
-  animation: shimmer 3s linear infinite, flicker 3s infinite;
-}
-
-@keyframes flicker {
-  0%,
-  19%,
-  21%,
-  23%,
-  25%,
-  54%,
-  56%,
-  100% {
-    opacity: 1;
-  }
-  20%,
-  24%,
-  55% {
-    opacity: 0.6;
-  }
+  animation: shimmer 3s linear infinite;
 }
 
 .skill-item,
