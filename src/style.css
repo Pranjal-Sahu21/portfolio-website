@@ -1544,19 +1544,19 @@ nav {
   .journey-card,
   .journey-card.left,
   .journey-card.right {
-    width: calc(100% - 60px);
+    width: calc(100% - 20px);
     align-self: flex-start;
-    margin-left: 48px;
+    margin-left: 24px;
     padding: 15px;
   }
 
   .timeline-dot {
-    left: 22px;
+    left: 4px;
     transform: none;
   }
 
   .journey-container::before {
-    left: 30px;
+    left: 12px;
     transform: none;
     width: 4px;
   }
