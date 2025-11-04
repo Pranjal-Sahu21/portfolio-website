@@ -10,7 +10,7 @@ import reactLogo from "../assets/react-logo.png";
 import javaLogo from "../assets/java-logo.png";
 import pythonLogo from "../assets/python-logo.png";
 import mySqlLogo from "../assets/mysql-logo.png";
-import routerLogo from "../assets/react-Router-logo.svg";
+import routerLogo from "../assets/react-router-logo.svg";
 import motionLogo from "../assets/framer-motion.svg"
 
 export default function Skills() {
