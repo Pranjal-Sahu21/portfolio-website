@@ -11,7 +11,7 @@ import javaLogo from "../assets/java-logo.png";
 import pythonLogo from "../assets/python-logo.png";
 import mySqlLogo from "../assets/mysql-logo.png";
 import dsaLogo from "../assets/dsa.png";
-import routerLogo from "../assets/React-Router-logo.png";
+import routerLogo from "../assets/react-Router-logo.svg";
 import motionLogo from "../assets/framer-motion.svg"
 
 export default function Skills() {
