@@ -11,6 +11,8 @@ import javaLogo from "../assets/java-logo.png";
 import pythonLogo from "../assets/python-logo.png";
 import mySqlLogo from "../assets/mysql-logo.png";
 import dsaLogo from "../assets/dsa.png";
+import routerLogo from "../assets/React-Router-logo.png";
+import motionLogo from "../assets/framer-motion.svg"
 
 export default function Skills() {
   const allSkills = [
@@ -19,10 +21,11 @@ export default function Skills() {
     { name: "Tailwind CSS", img: tailwindLogo },
     { name: "Vanilla JS", img: vanillaLogo },
     { name: "React.js", img: reactLogo },
+    {name: "Framer motion", img: motionLogo},
+    {name: "React router", img: routerLogo},
     { name: "Java", img: javaLogo },
     { name: "Python", img: pythonLogo },
     { name: "MySQL", img: mySqlLogo },
-    { name: "DSA", img: dsaLogo },
   ];
 
   const mid = Math.ceil(allSkills.length / 2);
@@ -92,7 +95,7 @@ export default function Skills() {
         {allSkills.map((s) => (
           <div className="skill-item" key={s.name}>
             <div className="skill-icon">
-              <img src={s.img} alt={s.name} />
+              <img src={s.img} alt={s.name} className={s.img === motionLogo ? "motion-logo" : ""}/>
             </div>
             <p className="skill-name">{s.name}</p>
           </div>

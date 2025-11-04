@@ -337,8 +337,8 @@ footer {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 36px;
   width: 100%;
   max-width: 1000px;
   justify-items: center;
@@ -1261,6 +1261,10 @@ body {
   .logo {
     display: none;
   }
+}
+
+.motion-logo {
+  transform: scale(0.75);
 }
 
 ul.nav-links {
