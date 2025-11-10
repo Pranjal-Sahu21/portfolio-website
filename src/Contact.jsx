@@ -20,7 +20,7 @@ export default function Contact() {
           damping: 20,
         }}
       >
-        Contact me
+        Get in touch
       </motion.h1>
 
       {state.succeeded ? (
