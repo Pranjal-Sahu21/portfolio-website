@@ -1,7 +1,8 @@
 import "./style.css";
 import { motion, useInView } from "framer-motion";
-import {useRef} from "react";
+import { useRef } from "react";
 
+import voltMart from "../assets/voltmart.png";
 import cheeType from "../assets/cheetype.png";
 import tasteGpt from "../assets/tastegpt.png";
 import skyLune from "../assets/skylune.png";
@@ -12,6 +13,12 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const projects = [
+    {
+      title: "Voltmart",
+      img: voltMart,
+      link: "https://voltmart.netlify.app/",
+      desc: "A quick-commerce web app built with React, featuring smooth navigation, persistent cart/address storage, Clerk authentication, Lottie animations, slick UI components, and streamlined state management with Context API and protected routing.",
+    },
     {
       title: "CheeType",
       img: cheeType,
@@ -35,12 +42,6 @@ export default function Projects() {
       img: plannix,
       link: "https://plannix.netlify.app/",
       desc: "A clean and user-friendly to-do list application with a minimalist interface. The app is fully responsive and uses local storage to ensure tasks persist across sessions without requiring a backend.",
-    },
-    {
-      title: "GreenTech",
-      img: greenTech,
-      link: "https://greentechnologies.netlify.app/",
-      desc: "My first project, built only with HTML and CSS, to practice Flexbox and responsive web design.",
     },
   ];
 
