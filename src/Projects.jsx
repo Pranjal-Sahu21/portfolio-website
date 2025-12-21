@@ -3,11 +3,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 import voltMart from "../assets/voltmart.png";
+import resuscope from "../assets/ResuScope.png";
 import cheeType from "../assets/cheetype.png";
 import tasteGpt from "../assets/tastegpt.png";
 import skyLune from "../assets/skylune.png";
 import plannix from "../assets/plannix.png";
-import greenTech from "../assets/greentech.png";
 
 export default function Projects() {
   const ref = useRef(null);
@@ -18,6 +18,12 @@ export default function Projects() {
       img: voltMart,
       link: "https://voltmart.netlify.app/",
       desc: "A quick-commerce web app built with React, featuring smooth navigation, persistent cart/address storage, Clerk authentication, Lottie animations, slick UI components, and streamlined state management with Context API and protected routing.",
+    },
+    {
+      title: "ResuScope",
+      img: resuscope,
+      link: "https://resuscope.netlify.app/",
+      desc: "A group project focused on an AI-powered resume analyzer that evaluates resume–job fit using ATS, skills, content, and structure scores, while providing personalized tips through a modern React-based web interface.",
     },
     {
       title: "CheeType",
