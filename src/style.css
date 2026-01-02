@@ -7,6 +7,7 @@
   --light-text: #f1f1f1;
   --muted-text: #cccccc;
   --card-bg: #2c2c2c;
+  --input-bg: #181818
 }
 
 * {
@@ -756,7 +757,6 @@ footer .social-icons a:hover {
 .contact-card input:focus,
 .contact-card textarea:focus {
   border-color: var(--primary);
-  background: rgba(50, 50, 50, 0.9);
   outline: none;
 }
 
@@ -1578,4 +1578,19 @@ nav {
   .journey-container {
     gap: 40px;
   }
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset;
+  -webkit-text-fill-color: var(--light-text);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-moz-autofill,
+textarea:-moz-autofill,
+select:-moz-autofill {
+  box-shadow: 0 0 0px 1000px var(--input-bg) inset;
+  -moz-text-fill-color: var(--light-text);
 }
