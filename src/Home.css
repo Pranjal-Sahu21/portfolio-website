@@ -67,7 +67,6 @@
 
 .hero-buttons .primary:hover {
   background-position: left center;
-  transform: scale(1.05);
 }
 
 .hero-buttons .secondary {

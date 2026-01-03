@@ -139,7 +139,7 @@ export default function Home() {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{fontFamily: "Montserrat"}}
+          style={{ fontFamily: "Montserrat" }}
         >
           Hi, I'm <span className="name">Pranjal</span>
         </motion.h1>
@@ -175,23 +175,11 @@ export default function Home() {
             target="_blank"
             className="primary"
             download
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             Download CV
           </motion.a>
 
-          <motion.a
-            href="#contact"
-            className="secondary"
-            animate={{ y: [0, -20, 0] }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5,
-            }}
-          >
+          <motion.a href="#contact" className="secondary">
             Contact Me
           </motion.a>
         </motion.div>
