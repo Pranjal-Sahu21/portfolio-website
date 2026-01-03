@@ -17,7 +17,7 @@ export default function Projects() {
       title: "Voltmart",
       img: voltMart,
       link: "https://voltmart.netlify.app/",
-      desc: "A quick-commerce web app built with React, featuring smooth navigation, persistent cart/address storage, Clerk authentication, Lottie animations, slick UI components, and streamlined state management with Context API and protected routing.",
+      desc: "A quick-commerce web app built with React, featuring smooth navigation, persistent cart/orders/address storage, Clerk authentication, Lottie animations, slick UI components, and streamlined state management with Context API and protected routing.",
     },
     {
       title: "ResuScope",

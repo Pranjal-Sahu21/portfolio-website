@@ -35,7 +35,6 @@ react-dom: ^19.1.1
 │   ├── css-logo.png
 │   ├── favicon.ico
 │   ├── framer-motion.svg
-│   ├── greentech.png
 │   ├── html-logo.png
 │   ├── icon.png
 │   ├── image.png
@@ -43,8 +42,6 @@ react-dom: ^19.1.1
 │   ├── js-logo.png
 │   ├── mysql-logo.png
 │   ├── photo.jpg
-│   ├── picofme (7).png
-│   ├── picofme (7).webp
 │   ├── plannix.png
 │   ├── python-logo.png
 │   ├── react-logo.png
@@ -52,6 +49,7 @@ react-dom: ^19.1.1
 │   ├── skylune.png
 │   ├── tailwindcss-logo.png
 │   └── tastegpt.png
+│   └── voltmart.png
 ├── eslint.config.js
 ├── index.html
 ├── package.json
