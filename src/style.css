@@ -1595,6 +1595,6 @@ select:-moz-autofill {
   -moz-text-fill-color: var(--light-text);
 }
 
-a:hover {
+.project-card-3d:hover {
   cursor: url("../assets/custom-arrow.svg") 16 16, pointer;
 }
