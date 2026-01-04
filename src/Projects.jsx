@@ -1,13 +1,16 @@
 import "./style.css";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-
+import { useRef, useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import voltMart from "../assets/voltmart.png";
 import resuscope from "../assets/ResuScope.png";
 import cheeType from "../assets/cheetype.png";
 import tasteGpt from "../assets/tastegpt.png";
 import skyLune from "../assets/skylune.png";
 import plannix from "../assets/plannix.png";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Projects() {
   const ref = useRef(null);
@@ -53,6 +56,46 @@ export default function Projects() {
 
   const marqueeProjects = [...projects, ...projects];
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  const NextArrow = ({ onClick }) => (
+    <div onClick={onClick} className="slick-arrow-btn slick-next-btn">
+      <ChevronRight size={18} />
+    </div>
+  );
+
+  const PrevArrow = ({ onClick }) => (
+    <div onClick={onClick} className="slick-arrow-btn slick-prev-btn">
+      <ChevronLeft size={18} />
+    </div>
+  );
+
+  const sliderSettings = {
+    dots: true,
+    arrows: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "20px",
+
+    autoplay: true,
+    autoplaySpeed: 3500,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+  };
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section id="projects" className="section projects-section">
       <motion.h1
@@ -69,65 +112,59 @@ export default function Projects() {
         Projects
       </motion.h1>
 
-      <motion.div
+      <div
         className="marquee-wrapper"
-        initial={
-          window.innerWidth > 768 ? { opacity: 0, rotate: 0 } : undefined
-        }
-        whileInView={
-          window.innerWidth > 768 ? { opacity: 1, rotate: -5 } : undefined
-        }
         viewport={{ once: true, amount: 0.3 }}
-        transition={
-          window.innerWidth > 768
-            ? { duration: 0.6, ease: "easeOut" }
-            : undefined
-        }
       >
-        <motion.div
-          className="marquee desktop-marquee"
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{
-            repeat: Infinity,
-            ease: "linear",
-            duration: window.innerWidth <= 1024 ? 20 : 40,
-          }}
-        >
-          {marqueeProjects.map((p, i) => (
-            <a
-              href={p.link}
-              key={i}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-card-3d"
-            >
-              <img src={p.img} alt={p.title} />
-              <h2 className="project-title">{p.title}</h2>
-              <p className="project-desc">{p.desc}</p>
-            </a>
-          ))}
-        </motion.div>
+        {/* DESKTOP MARQUEE */}
+        {!isMobile && (
+          <motion.div
+            className="marquee desktop-marquee"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{
+              repeat: Infinity,
+              ease: "linear",
+              duration: window.innerWidth <= 1024 ? 20 : 40,
+            }}
+          >
+            {marqueeProjects.map((p, i) => (
+              <a
+                href={p.link}
+                key={i}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card-3d"
+              >
+                <img src={p.img} alt={p.title} />
+                <h2 className="project-title">{p.title}</h2>
+                <p className="project-desc">{p.desc}</p>
+              </a>
+            ))}
+          </motion.div>
+        )}
 
-        <div className="mobile-cards">
-          {projects.map((p, i) => (
-            <motion.a
-              href={p.link}
-              key={i}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-card"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-            >
-              <img src={p.img} alt={p.title} />
-              <h2 className="project-title">{p.title}</h2>
-              <p className="project-desc">{p.desc}</p>
-            </motion.a>
-          ))}
-        </div>
-      </motion.div>
+        {/* MOBILE SLICK SLIDER */}
+        {isMobile && (
+          <div className="mobile-slick-visible">
+            <Slider {...sliderSettings}>
+              {projects.map((p, i) => (
+                <div key={i}>
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card"
+                  >
+                    <img src={p.img} alt={p.title} />
+                    <h2 className="project-title">{p.title}</h2>
+                    <p className="project-desc">{p.desc}</p>
+                  </a>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        )}
+      </div>
     </section>
   );
 }

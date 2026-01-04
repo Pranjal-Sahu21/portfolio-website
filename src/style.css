@@ -1598,3 +1598,169 @@ select:-moz-autofill {
 .project-card-3d:hover {
   cursor: url("../assets/custom-arrow.svg") 16 16, pointer;
 }
+
+.mobile-slider {
+  padding: 1rem;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #aaa;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #000;
+}
+
+.slick-slide > div {
+  padding: 0 8px;
+}
+
+.project-desc {
+  line-height: 1.625;
+}
+
+.mobile-slider,
+.slick-list,
+.slick-track {
+  height: auto;
+}
+
+.slick-slide-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.slick-slide {
+  height: auto !important;
+}
+
+.project-card {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+}
+
+@media (max-width: 768px) {
+  .marquee-wrapper {
+    overflow: visible;
+  }
+}
+
+.mobile-slick-visible {
+  display: block !important;
+  opacity: 1 !important;
+  transform: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.slick-slider,
+.slick-list,
+.slick-track {
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+  height: auto !important;
+}
+
+.project-card {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+}
+
+.project-card {
+  height: 430px;
+  align-self: flex-start;
+  padding: 1rem;
+}
+
+.slick-slide {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .project-title {
+    margin-top: 24px;
+  }
+
+  .marquee-wrapper::after,
+  .marquee-wrapper::before {
+    display: none;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+.slick-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--card-bg);
+  border-radius: 50%;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.slick-arrow-btn svg {
+  color: var(--primary);
+}
+
+.slick-prev-btn {
+  left: -10px;
+}
+
+.slick-next-btn {
+  right: -10px;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    max-width: 480px;
+  }
+  .slick-prev-btn {
+    left: 6px;
+  }
+  .slick-next-btn {
+    right: 6px;
+  }
+}
+
+@media (max-width: 340px) {
+  .project-card {
+    height: 490px;
+  }
+}
