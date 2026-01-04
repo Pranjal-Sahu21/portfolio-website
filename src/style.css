@@ -7,7 +7,7 @@
   --light-text: #f1f1f1;
   --muted-text: #cccccc;
   --card-bg: #2c2c2c;
-  --input-bg: #181818
+  --input-bg: #181818;
 }
 
 * {
@@ -1593,4 +1593,8 @@ textarea:-moz-autofill,
 select:-moz-autofill {
   box-shadow: 0 0 0px 1000px var(--input-bg) inset;
   -moz-text-fill-color: var(--light-text);
+}
+
+a:hover {
+  cursor: url("../assets/custom-arrow.svg") 16 16, pointer;
 }
