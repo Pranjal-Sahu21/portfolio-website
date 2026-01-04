@@ -1605,11 +1605,27 @@ select:-moz-autofill {
 
 .slick-dots li button:before {
   font-size: 10px;
-  color: #aaa;
+  color: var(--primary);
+  opacity: 0.4;
 }
 
 .slick-dots li.slick-active button:before {
-  color: #000;
+  color: var(--primary);
+  opacity: 1;
+}
+
+.slick-dots li button::before {
+  color: var(--primary) !important;
+  opacity: 0.4 !important;
+}
+
+.slick-dots li.slick-active button::before {
+  color: var(--primary) !important;
+  opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button::before {
+  text-shadow: 0 0 6px rgba(226, 88, 34, 0.7);
 }
 
 .slick-slide > div {
