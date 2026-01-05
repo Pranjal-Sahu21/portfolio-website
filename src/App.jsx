@@ -12,6 +12,8 @@ import "lenis/dist/lenis.css";
 import "./style.css";
 
 export default function App() {
+
+  
   const lenisRef = useRef(null);
 
   useEffect(() => {
@@ -91,7 +93,7 @@ export default function App() {
     <>
       <Header />
       <Home />
-      <ParticleBackground />
+      {/* <ParticleBackground /> */}
       <Journey />
       <Skills />
       <Projects />

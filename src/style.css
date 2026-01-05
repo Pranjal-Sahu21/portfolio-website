@@ -1780,3 +1780,7 @@ select:-moz-autofill {
     height: 490px;
   }
 }
+
+body {
+  background-color: black;
+}

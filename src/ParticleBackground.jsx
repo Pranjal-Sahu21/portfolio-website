@@ -10,52 +10,48 @@ export default function ParticleBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const particles = Array.from({ length: 50 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 3 + 1,
-      speedX: 0,
-      speedY: Math.random() * 0.6 + 0.2,
-      opacity: Math.random() * 0.5 + 0.3,
-    }));
-
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
     window.addEventListener("resize", handleResize);
 
-    function drawTriangle(x, y, size, opacity) {
-      ctx.beginPath();
-      ctx.moveTo(x, y - size / 2);
-      ctx.lineTo(x - size / 2, y + size / 2);
-      ctx.lineTo(x + size / 2, y + size / 2);
-      ctx.closePath();
-      ctx.fillStyle = `rgba(220, 220, 220, ${opacity})`;
-      ctx.fill();
+    const numStars = 30;
+    const stars = [];
+
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        opacity: Math.random(),
+        delta: Math.random() * 0.02 + 0.005,
+      });
     }
 
-    function animate() {
+    function drawStars() {
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach((p) => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        if (p.y > height) {
-          p.y = -p.size;
-          p.x = Math.random() * width;
+      stars.forEach((star) => {
+        star.opacity += star.delta;
+        if (star.opacity > 1 || star.opacity < 0) {
+          star.delta *= -1;
         }
 
-        drawTriangle(p.x, p.y, p.size, p.opacity);
+        ctx.fillStyle = `rgba(200, 200, 200, ${star.opacity})`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
       });
 
-      requestAnimationFrame(animate);
+      requestAnimationFrame(drawStars);
     }
 
-    animate();
+    drawStars();
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -69,7 +65,6 @@ export default function ParticleBackground() {
         height: "100%",
         zIndex: 0,
         pointerEvents: "none",
-        background: "#111",
       }}
     />
   );
