@@ -34,7 +34,6 @@
   font-weight: 400;
   margin-top: 48px;
   margin-bottom: 48px;
-
 }
 
 .hero-buttons a {
@@ -140,4 +139,40 @@ canvas {
 
 .glow-text {
   margin-top: 36px;
+}
+
+.mouse-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--primary);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  opacity: 0.9;
+  box-shadow: 0 0 12px rgba(178, 34, 34, 0.3);
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 4px;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+
+@media (max-width: 768px) {
+  .mouse, .wheel, .mouse-scroll {
+    display: none;
+  }
 }

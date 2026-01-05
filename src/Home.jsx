@@ -184,6 +184,24 @@ export default function Home() {
           </motion.a>
         </motion.div>
       </motion.div>
+      <motion.div
+        className="mouse-scroll"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6 }}
+      >
+        <div className="mouse">
+          <motion.span
+            className="wheel"
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+      </motion.div>
     </motion.section>
   );
 }
