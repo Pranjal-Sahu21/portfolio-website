@@ -26,6 +26,11 @@
   animation: shimmer 3s linear infinite;
 }
 
+.hero h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+}
+
 .hero-description {
   max-width: 600px;
   font-size: 1rem;
@@ -121,6 +126,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 1rem;
+  }
+}
+
 canvas {
   position: absolute;
   top: 0;
@@ -171,9 +182,10 @@ canvas {
   box-shadow: 0 0 8px var(--accent);
 }
 
-
 @media (max-width: 768px) {
-  .mouse, .wheel, .mouse-scroll {
+  .mouse,
+  .wheel,
+  .mouse-scroll {
     display: none;
   }
 }
