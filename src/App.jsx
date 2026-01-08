@@ -11,8 +11,84 @@ import "lenis/dist/lenis.css";
 import "./style.css";
 
 export default function App() {
+  const dot = document.querySelector(".cursor-dot");
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 2;
 
-  
+  let dotX = 0,
+    dotY = 0;
+
+  const delay = 0.06;
+  const offsetX = -6;
+  const offsetY = -2;
+
+  window.addEventListener("load", () => {
+    dotX = window.innerWidth / 2;
+    dotY = window.innerHeight / 2;
+    dot.style.left = dotX + "px";
+    dot.style.top = dotY + "px";
+  });
+
+  window.addEventListener("scroll", () => {
+    dot.classList.remove("button");
+    dot.textContent = "";
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    targetX = e.clientX + offsetX;
+    targetY = e.clientY + offsetY;
+    dot.classList.add("show");
+  });
+
+  window.addEventListener("mouseout", () => {
+    dot.classList.remove("show");
+  });
+
+  function follow() {
+    dotX += (targetX - dotX) * delay;
+    dotY += (targetY - dotY) * delay;
+
+    dot.style.left = dotX + "px";
+    dot.style.top = dotY + "px";
+
+    requestAnimationFrame(follow);
+  }
+
+  follow();
+
+  document.addEventListener(
+    "mouseenter",
+    (e) => {
+      if (e.target.closest(".project-card-3d")) {
+        dot.classList.add("button", "show");
+        dot.textContent = "View Live";
+      }
+    },
+    true
+  );
+
+  document.addEventListener(
+    "mouseleave",
+    (e) => {
+      if (e.target.closest(".project-card-3d")) {
+        dot.classList.remove("button");
+        dot.textContent = "";
+      }
+    },
+    true
+  );
+
+  document.addEventListener("mousemove", (e) => {
+    const card = e.target.closest(".project-card-3d");
+    if (card) {
+      dot.classList.add("button");
+      dot.textContent = "View Live";
+    } else {
+      dot.classList.remove("button");
+      dot.textContent = "";
+    }
+  });
+
   const lenisRef = useRef(null);
 
   useEffect(() => {
@@ -92,7 +168,6 @@ export default function App() {
     <>
       <Header />
       <Home />
-      {/* <ParticleBackground /> */}
       <Journey />
       <Skills />
       <Projects />
