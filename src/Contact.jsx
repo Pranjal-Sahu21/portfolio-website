@@ -1,7 +1,6 @@
 import "./style.css";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -11,26 +10,32 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const serviceId = import.meta.env.VITE_SERVICE_ID;
-    const templateId = import.meta.env.VITE_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+    const formData = new FormData(formRef.current);
 
-    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey).then(
-      () => {
-        setIsSuccess(true);
-        setIsSubmitting(false);
-        formRef.current.reset();
-      },
-      (error) => {
-        console.error(error);
+    fetch("https://formspree.io/f/movnrvqz", {
+      // <-- paste your ID here
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          setIsSuccess(true);
+          setIsSubmitting(false);
+          formRef.current.reset();
+        } else {
+          setIsSubmitting(false);
+          alert("Failed to send message. Please try again.");
+        }
+      })
+      .catch(() => {
         setIsSubmitting(false);
         alert("Failed to send message. Please try again.");
-      }
-    );
+      });
   };
 
   return (
