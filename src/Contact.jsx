@@ -17,7 +17,6 @@ export default function Contact() {
     const formData = new FormData(formRef.current);
 
     fetch("https://formspree.io/f/movnrvqz", {
-      // <-- paste your ID here
       method: "POST",
       body: formData,
       headers: { Accept: "application/json" },
