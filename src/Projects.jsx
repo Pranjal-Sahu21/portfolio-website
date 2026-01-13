@@ -20,37 +20,37 @@ export default function Projects() {
       title: "Voltmart",
       img: voltMart,
       link: "https://voltmart.netlify.app/",
-      desc: "A quick-commerce web app built with React, featuring smooth navigation, persistent cart/orders/address storage, Clerk authentication, Lottie animations, slick UI components, and streamlined state management with Context API and protected routing.",
+      desc: "A quick-commerce web app with smooth navigation and persistent cart/orders/address storage.",
     },
     {
       title: "ResuScope",
       img: resuscope,
       link: "https://resuscope.netlify.app/",
-      desc: "A group project focused on an AI-powered resume analyzer that evaluates resume–job fit using ATS, skills, content, and structure scores, while providing personalized tips through a modern React-based web interface.",
+      desc: "An AI-powered resume analyzer that evaluates resume-job fit and provides personalized improvement tips.",
     },
     {
       title: "CheeType",
       img: cheeType,
       link: "https://cheetype.netlify.app/",
-      desc: "An interactive React application that tests typing speed and accuracy, featuring dynamic word generation, real-time performance tracking, smooth UI feedback, and customizable challenge lengths.",
+      desc: "An interactive typing test that tracks speed and accuracy in real-time, with customisable test lengths.",
     },
     {
       title: "TasteGPT",
       img: tasteGpt,
       link: "https://tastegpt.netlify.app/",
-      desc: "A React app that takes ingredients from the user and recommends a single recipe using the Spoonacular API, featuring a responsive interface with a dark/light mode toggle.",
+      desc: "Recommends a single recipe based on user-provided ingredients with dark/light mode integration.",
     },
     {
       title: "SkyLune",
       img: skyLune,
       link: "https://skylune.netlify.app/",
-      desc: "A clean, user-friendly weather app that delivers current conditions and a 4-day forecast. Focused on simplicity, performance, and clear presentation of essential information.",
+      desc: "A simple weather app delivering current conditions and a 4-day forecast with live location tracking.",
     },
     {
       title: "Plannix",
       img: plannix,
       link: "https://plannix.netlify.app/",
-      desc: "A clean and user-friendly to-do list application with a minimalist interface. The app is fully responsive and uses local storage to ensure tasks persist across sessions without requiring a backend.",
+      desc: "A fully responsive minimalist to-do list app that keeps tasks persistent across sessions by using localStorage.",
     },
   ];
 

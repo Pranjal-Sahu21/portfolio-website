@@ -1071,7 +1071,7 @@ body {
     right: 0;
     height: 100vh;
     width: 100vw;
-    background-color: #111;
+    background-color: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1735,7 +1735,7 @@ select:-moz-autofill {
 }
 
 .project-card {
-  height: 430px;
+  height: 368px;
   align-self: flex-start;
   padding: 1rem;
   background: rgba(24, 24, 24, 0.65);
@@ -1821,7 +1821,7 @@ select:-moz-autofill {
 
 @media (max-width: 340px) {
   .project-card {
-    height: 490px;
+    height: 390px;
   }
 }
 
