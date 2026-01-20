@@ -1,5 +1,5 @@
 import "./style.css";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 
 export default function Contact() {
@@ -48,27 +48,7 @@ export default function Contact() {
         Get in touch
       </motion.h1>
 
-      {isSuccess ? (
-        <div className="thank-you-card">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-          <h2>Thank you!</h2>
-          <p>
-            Your message has been sent successfully. I’ll get back to you soon.
-          </p>
-        </div>
-      ) : (
+      {!isSuccess && (
         <motion.form
           ref={formRef}
           onSubmit={handleSubmit}
@@ -87,9 +67,8 @@ export default function Contact() {
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Your Email" required />
           <input type="text" name="subject" placeholder="Subject" required />
-          <textarea name="message" placeholder="Message" rows="5" required />
-
-          <button type="submit" disabled={isSubmitting}>
+          <textarea name="message" rows="5" placeholder="Message" required />
+          <button className="submit-btn" type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send"}
           </button>
         </motion.form>
@@ -131,6 +110,35 @@ export default function Contact() {
           <i className="fas fa-phone"></i>
         </a>
       </motion.div>
+
+      {/* Success Popup */}
+      <AnimatePresence>
+        {isSuccess && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="popup-overlay"
+            onClick={() => setIsSuccess(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="popup-box"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2 className="heading">Message Sent!</h2>
+              <p className="message-para">Thanks for reaching out — I'll get back to you soon.</p>
+              <button className="close-btn" onClick={() => setIsSuccess(false)}>
+                Close
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
