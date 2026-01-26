@@ -27,7 +27,7 @@
 }
 
 .hero h2 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Downlink", sans-serif;
   font-size: 24px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .hero-buttons a {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Downlink", sans-serif;
   padding: 14px 28px;
   border-radius: 10px;
   font-size: 1rem;
@@ -120,7 +120,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 425px) {
   .hero-buttons .secondary {
     display: none;
   }

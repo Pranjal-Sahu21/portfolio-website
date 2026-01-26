@@ -21,7 +21,7 @@ export default function Home() {
     };
     window.addEventListener("resize", handleResize);
 
-    const numStars = 30;
+    const numStars = 15;
     const stars = [];
     for (let i = 0; i < numStars; i++) {
       const color = "rgba(200, 200, 200, ";
@@ -137,9 +137,9 @@ export default function Home() {
       >
         <motion.h1
           initial={{ opacity: 0, x: -100 }}
+          className="introduction"
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ fontFamily: "Montserrat" }}
         >
           Hi, I'm <span className="name">Pranjal</span>
         </motion.h1>
