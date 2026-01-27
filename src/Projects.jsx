@@ -109,7 +109,7 @@ export default function Projects() {
           damping: 20,
         }}
       >
-        Projects
+        Featured Projects
       </motion.h1>
 
       <div

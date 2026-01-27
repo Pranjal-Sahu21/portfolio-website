@@ -45,7 +45,7 @@ export default function Contact() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
-        Get in touch
+        Let's work together
       </motion.h1>
 
       {!isSuccess && (

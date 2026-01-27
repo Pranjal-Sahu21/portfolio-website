@@ -79,7 +79,7 @@ export default function Skills() {
         animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
-        Skills
+        Skills & Expertise
       </motion.h2>
 
       <motion.div
