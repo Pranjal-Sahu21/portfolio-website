@@ -61,7 +61,7 @@ export default function App() {
     (e) => {
       if (e.target.closest(".project-card-3d")) {
         dot.classList.add("button", "show");
-        dot.textContent = "View Live";
+        dot.textContent = "🡕";
       }
     },
     true
@@ -82,7 +82,7 @@ export default function App() {
     const card = e.target.closest(".project-card-3d");
     if (card) {
       dot.classList.add("button");
-      dot.textContent = "View Live";
+      dot.textContent = "🡕";
     } else {
       dot.classList.remove("button");
       dot.textContent = "";
