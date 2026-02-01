@@ -12,6 +12,8 @@ import pythonLogo from "../assets/python-logo.png";
 import mySqlLogo from "../assets/mysql-logo.png";
 import routerLogo from "../assets/react-router-logo.svg";
 import motionLogo from "../assets/framer-motion.svg"
+import mongoLogo from "../assets/mongodb-logo.png"
+import postmanLogo from "../assets/postman-logo.png"
 
 export default function Skills() {
   const allSkills = [
@@ -25,6 +27,8 @@ export default function Skills() {
     { name: "Java", img: javaLogo },
     { name: "Python", img: pythonLogo },
     { name: "MySQL", img: mySqlLogo },
+    { name: "MongoDB", img: mongoLogo },
+    { name: "Postman", img: postmanLogo },
   ];
 
   const mid = Math.ceil(allSkills.length / 2);
