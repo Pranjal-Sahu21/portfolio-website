@@ -1,9 +1,6 @@
 # 🌟 Portfolio Website
 
 A modern, interactive personal portfolio website built with React and powered by cutting-edge web technologies. Features smooth animations, responsive design, and a beautiful UI to showcase your projects and skills.
-# 🌟 Portfolio Website
-
-A modern, interactive personal portfolio website built with React and powered by cutting-edge web technologies. Features smooth animations, responsive design, and a beautiful UI to showcase your projects and skills.
 
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/-Vite-purple?logo=vite&logoColor=white)
@@ -22,12 +19,12 @@ A modern, interactive personal portfolio website built with React and powered by
 - **🖱️ Custom Cursor** - Interactive custom cursor with hover effects on project cards
 - **⚡ Smooth Scrolling** - Lenis integration for butter-smooth scroll experience
 - **🎪 Project Showcase** - Carousel-based project display with live links and descriptions:
-  - Voltmart - E-commerce web app
+  - Crexo - An image generation ai saas app
+  - Voltmart - Quick-commerce web app
   - ResuScope - AI-powered resume analyzer
   - CheeType - Interactive typing test
   - TasteGPT - Recipe recommendation engine
   - SkyLune - Real-time weather application
-  - Plannix - Planning & organization tool
 - **💼 Skills Section** - Interactive skill showcase with logos for:
   - **Frontend**: HTML, CSS, Tailwind CSS, Vanilla JS, React.js, Framer Motion, React Router
   - **Backend**: Java, Python
@@ -82,24 +79,21 @@ A modern, interactive personal portfolio website built with React and powered by
 ```
 portfolio-website/
 ├── assets/                   # Images and static assets
-│   ├── project-screenshots/  # Screenshots of featured projects
-│   ├── skill-logos/          # Technology logos (HTML, CSS, React, etc.)
-│   ├── profile-photo.jpg     # Profile picture
-│   └── icons/                # App favicon and touch icons
+│   └── fonts/                # Font files
+│       └── downlink/         # Custom fonts
 │
 ├── src/
-│   ├── App.jsx              # Main app component with routing and custom cursor
-│   ├── Header.jsx           # Navigation header with responsive mobile menu
-│   ├── Home.jsx             # Hero section with introduction
-│   ├── Journey.jsx          # Professional journey/experience section
-│   ├── Skills.jsx           # Skills showcase with animated grid
-│   ├── Projects.jsx         # Featured projects carousel with live links
-│   ├── Contact.jsx          # Contact form with email integration
-│   ├── Footer.jsx           # Footer with links and social info
-│   ├── ParticleBackground.jsx # Background particle effects
+│   ├── App.jsx              # Main app component
+│   ├── Header.jsx           # Navigation header
+│   ├── Home.jsx             # Hero section
+│   ├── Journey.jsx          # Professional journey section
+│   ├── Skills.jsx           # Skills showcase
+│   ├── Projects.jsx         # Featured projects carousel
+│   ├── Contact.jsx          # Contact form
+│   ├── Footer.jsx           # Footer component
 │   ├── main.jsx             # React entry point
-│   ├── style.css            # Global and component styles
-│   └── Home.css             # Home section specific styles
+│   ├── style.css            # Global styles
+│   └── Home.css             # Home section styles
 │
 ├── index.html               # HTML entry point
 ├── vite.config.js           # Vite configuration
