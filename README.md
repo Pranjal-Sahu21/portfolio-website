@@ -1,6 +1,9 @@
 # 🌟 Portfolio Website
 
 A modern, interactive personal portfolio website built with React and powered by cutting-edge web technologies. Features smooth animations, responsive design, and a beautiful UI to showcase your projects and skills.
+# 🌟 Portfolio Website
+
+A modern, interactive personal portfolio website built with React and powered by cutting-edge web technologies. Features smooth animations, responsive design, and a beautiful UI to showcase your projects and skills.
 
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/-Vite-purple?logo=vite&logoColor=white)

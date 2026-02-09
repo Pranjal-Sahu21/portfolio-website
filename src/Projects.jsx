@@ -9,7 +9,7 @@ import resuscope from "../assets/ResuScope.png";
 import cheeType from "../assets/cheetype.png";
 import tasteGpt from "../assets/tastegpt.png";
 import skyLune from "../assets/skylune.png";
-import plannix from "../assets/plannix.png";
+import crexo from "../assets/crexo-image.png";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Projects() {
@@ -17,40 +17,40 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const projects = [
     {
+      title: "Crexo",
+      img: crexo,
+      link: "https://crexo.netlify.app",
+      desc: "AI image generation platform powered by Clipdrop AI, with integrated Razorpay payments for credit-based generation.",
+    },
+    {
       title: "Voltmart",
       img: voltMart,
-      link: "https://voltmart.netlify.app/",
+      link: "https://voltmart.netlify.app",
       desc: "A quick-commerce web app with smooth navigation and persistent cart/orders/address storage.",
     },
     {
       title: "ResuScope",
       img: resuscope,
-      link: "https://resuscope.netlify.app/",
+      link: "https://resuscope.netlify.app",
       desc: "An AI-powered resume analyzer that evaluates resume-job fit and provides personalized improvement tips.",
     },
     {
       title: "CheeType",
       img: cheeType,
-      link: "https://cheetype.netlify.app/",
+      link: "https://cheetype.netlify.app",
       desc: "An interactive typing test that tracks speed and accuracy in real-time, with customisable test lengths.",
     },
     {
       title: "TasteGPT",
       img: tasteGpt,
-      link: "https://tastegpt.netlify.app/",
+      link: "https://tastegpt.netlify.app",
       desc: "Recommends a single recipe based on user-provided ingredients with dark/light mode integration.",
     },
     {
       title: "SkyLune",
       img: skyLune,
-      link: "https://skylune.netlify.app/",
+      link: "https://skylune.netlify.app",
       desc: "A simple weather app delivering current conditions and a 4-day forecast with live location tracking.",
-    },
-    {
-      title: "Plannix",
-      img: plannix,
-      link: "https://plannix.netlify.app/",
-      desc: "A fully responsive minimalist to-do list app that keeps tasks persistent across sessions by using localStorage.",
     },
   ];
 
@@ -112,10 +112,7 @@ export default function Projects() {
         Featured Projects
       </motion.h1>
 
-      <div
-        className="marquee-wrapper"
-        viewport={{ once: true, amount: 0.3 }}
-      >
+      <div className="marquee-wrapper" viewport={{ once: true, amount: 0.3 }}>
         {/* DESKTOP MARQUEE */}
         {!isMobile && (
           <motion.div
